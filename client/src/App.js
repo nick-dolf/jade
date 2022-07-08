@@ -14,11 +14,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <form action="/api" method="post">
+          <label>
+            Name:
+            <input type="text" name="name" />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
         <p>{!data ? "Loading..." : data}</p>
       </header>
     </div>
   );
 }
-
 export default App;
