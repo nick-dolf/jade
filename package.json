@@ -1,0 +1,23 @@
+{
+  "name": "jade",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/jade.js",
+  "scripts": {
+    "start": "node server/jade.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-dolf/jade.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nick-dolf/jade/issues"
+  },
+  "homepage": "https://github.com/nick-dolf/jade#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
