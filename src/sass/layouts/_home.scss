@@ -1,0 +1,10 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+
+  @include large {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}

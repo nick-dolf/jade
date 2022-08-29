@@ -1,0 +1,28 @@
+.card {
+
+  h2 {
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: normal;
+  }
+
+
+  &:hover {
+
+    .card-image {
+      object-position: -30px;
+    }
+  }
+}
+
+.card-image-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+}
+
+.card-image {
+  width: 110%;
+  transition: object-position $speed-std ease-in-out;
+}

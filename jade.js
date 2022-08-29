@@ -1,6 +1,7 @@
 const PORT = 3013
 const express = require('express')
 const app = express()
+const build = require('./admin/utils/build')
 require('dotenv').config()
 
 // Set up Different Environments
@@ -10,6 +11,8 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'staging') {
   console.log("\n Staging environment")
 }
+
+build.renderSass();
 
 app.get('/admin', (req, res) => {
   res.send('Hello world from the admin, this is ' + process.env.NODE_ENV + ' environment')

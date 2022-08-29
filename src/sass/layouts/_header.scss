@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  position: sticky;
+  top: 0;
+
+
+  span {
+    font-size: 3.2rem;
+  }
+}
+
+.link-about {
+  font-size: 5rem;
+}
+
+.link-home {
+  font-size: 5rem;
+}

@@ -1,0 +1,44 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: ChakraPetch, helvetica;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin: 1.2em 0 0.6em 0;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 1em 0 0.5em 0;
+}
+
+p {
+
+}
+
+a {
+  text-decoration: none;
+  color: grey;
+
+  &:hover {
+    color: black;
+    transition: color $speed-std ease-in-out;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+
+
+  &:hover {
+    transition: color $speed-std ease-in-out;
+    color: var(--hover-color);
+  }
+}

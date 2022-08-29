@@ -1,0 +1,17 @@
+body {
+  margin: 8px;
+
+  @include medium {
+    margin: 16px;
+  };
+
+  @include large {
+    margin: 32px;
+  };
+
+  @include max {
+    margin: 32px 64px;
+  }
+
+  min-height: 100vh;
+}
