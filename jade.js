@@ -1,6 +1,7 @@
 const PORT = 3013
 const express = require('express')
 const app = express()
+module.exports = app
 const build = require('./admin/utils/build')
 require('dotenv').config()
 const marked = require('marked')
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 app.set('view engine', 'pug');
 app.set('views', path.join(process.cwd(), 'src/views'))
 app.locals.pretty = true;
+app.locals.baseURL = process.env.BASE_URL || ""
 // Convert Markdown and sanitize the HTML
 app.locals.md = (data) => {
   return sanitizeHtml(marked.parse(data))

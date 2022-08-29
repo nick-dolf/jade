@@ -1,0 +1,95 @@
+@font-face {
+  font-family: ChakraPetch;
+  src: url("../fonts/Chakra_Petch/ChakraPetch-Regular.ttf");
+  font-display: swap;
+}
+body {
+  margin: 8px;
+  min-height: 100vh;
+}
+@media screen and (min-width: 599px) {
+  body {
+    margin: 16px;
+  }
+}
+@media screen and (min-width: 999px) {
+  body {
+    margin: 32px;
+  }
+}
+@media screen and (min-width: 1199px) {
+  body {
+    margin: 32px 64px;
+  }
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: ChakraPetch, helvetica;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+.link:hover {
+  transition: color 0.6s ease-in-out;
+  color: black;
+}
+
+.card h2 {
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: normal;
+}
+.card:hover .card-image {
+  object-position: -30px;
+}
+
+.card-image-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 110%;
+  transition: object-position 0.6s ease-in-out;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  position: sticky;
+  top: 0;
+}
+header span {
+  font-size: 3.2rem;
+}
+
+.link-about {
+  color: white;
+  font-size: 5rem;
+}
+
+.link-home {
+  color: white;
+  font-size: 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+}
+@media screen and (min-width: 999px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

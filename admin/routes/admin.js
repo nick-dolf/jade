@@ -26,11 +26,12 @@ router.use((req, res, next) => {
   }
 })
 
-
 router.get('/', (req, res) => {
   res.redirect('/admin/dashboard')
 })
+
 router.use('/dashboard', require('./dashboard'))
 router.use('/pages', require('./pages'))
+router.use('/src/assets', express.static('src/assets'))
 
 module.exports = router
