@@ -14,8 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 build.renderSass();
 
-app.get('/admin', (req, res) => {
-  res.send('Hello world from the admin, this is ' + process.env.NODE_ENV + ' environment')
-})
+// Set up routes
+app.use('/admin', require('./admin/routes/admin'))
 
 app.listen(PORT, () => {console.log(`listening on ${PORT}...`)})
