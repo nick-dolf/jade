@@ -1,0 +1,15 @@
+section.columns
+  div.column
+    if columnOne
+      if Array.isArray(columnOne)
+        for content in columnOne
+          != md(content)
+      else
+        != md(columnOne.toString())
+  div.column
+    if columnTwo
+      if Array.isArray(columnTwo)
+        for content in columnTwo
+          != md(content)
+      else
+        != md(columnTwo.toString())

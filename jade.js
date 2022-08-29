@@ -11,6 +11,7 @@ const sanitizeHtml = require('sanitize-html')
 // Set up Different Environments
 if (process.env.NODE_ENV === 'development') {
   console.log("\nDev environment")
+  // On production this will be served by NGINX
   app.use(express.static('site'))
 } else if (process.env.NODE_ENV === 'staging') {
   console.log("\n Staging environment")
@@ -24,7 +25,6 @@ app.locals.pretty = true;
 app.locals.md = (data) => {
   return sanitizeHtml(marked.parse(data))
 }
-
 
 // Build
 build.renderSass();

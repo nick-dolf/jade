@@ -13,8 +13,24 @@ const user = {
   password: process.env.PASS
 }
 
-router.get('/', (req, res) => {
-  res.send('Hello world from the admin, this is ' + process.env.NODE_ENV + ' environment')
+router.get('/login', (req, res) => {
+  res.render('admin/login', { heading: 'Login' })
 })
+
+router.use((req, res, next) => {
+  if (req.session.loggedin) {
+    next()
+  } else {
+    req.session.original = req.url
+    res.redirect('/admin/login')
+  }
+})
+
+
+router.get('/', (req, res) => {
+  res.redirect('/admin/dashboard')
+})
+router.use('/dashboard', require('./dashboard'))
+router.use('/pages', require('./pages'))
 
 module.exports = router

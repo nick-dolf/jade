@@ -1,0 +1,15 @@
+html
+  include parts/head
+
+  body.m-4
+    include parts/header
+
+    main.d-flex.justify-content-center
+      form.mt-5.p-4.bg-secondary.text-white.rounded-3(action="./login" method="post")
+        div.form-outline.mb-4
+          input.form-control(type="text" name="email")
+          label-form-label User Name
+        div.form-outline.mb-4
+          input.form-control(type="password" name="password")
+          label-form-label Password
+        button.btn.btn-primary Sign In

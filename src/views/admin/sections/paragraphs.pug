@@ -1,0 +1,37 @@
+mixin paragraph(content, index)
+  li.list-group-item.d-flex.align-items-start.justify-content-between
+    textarea.col-10(name='paragraphs' rows=4 id='p_' + index)
+      = content
+    button.btn.btn-danger(onclick='deleteParagraph(event)') Delete
+
+mixin addParagraph
+  li.list-group-item
+    button.btn.btn-primary(onclick='newParagraph()' type='button') New
+
+script.
+  function newParagraph() {
+    const paragraphs = document.getElementById('paragraphs')
+    const index = paragraphs.children.length -1
+    const li = document.createElement('li')
+    li.className = 'list-group-item d-flex align-items-start justify-content-between'
+    const text = document.createElement('textarea')
+    text.className = 'col-10'
+    text.name = "paragraphs"
+    li.appendChild(text)
+    const button = document.createElement('button')
+    button.className = 'btn btn-danger'
+    button.innerText = 'Delete'
+    button.onclick = () => deleteParagraph(event)
+    li.appendChild(button)
+    paragraphs.insertBefore(li, paragraphs.children[index])
+  }
+  function deleteParagraph(event) {
+    event.preventDefault()
+    event.target.parentElement.remove()
+  }
+h2.my-3 Paragraphs
+
+ul.list-group-flush(id='paragraphs')
+  for content, index in paragraphs
+    +paragraph(content, index)
+  +addParagraph

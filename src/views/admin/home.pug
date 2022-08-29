@@ -1,0 +1,28 @@
+mixin page-row(name)
+  li.list-group-item.d-flex.align-items-center.justify-content-between
+    a.h4.link-dark(href= "series/" + name)= name
+    div
+      a.btn.btn-primary.mx-4(href="/pages/series/"+ name) Edit
+      a.btn.btn-danger(onclick="deletePage('" + name +  "')") Delete
+
+html
+  include parts/head
+  body.m-4
+    include parts/header
+
+    button.btn.btn-primary(onclick="updatePage('" + path + "')") Update
+    form(id="pageForm")
+      include parts/page-info
+      include parts/page-style
+
+      h2.my-3 Menu
+
+      ul.list-group-flush
+
+        li.list-group-item
+          include components/card-image
+
+        li.list-group-item
+            input.btn.btn-primary.ms-4(type='submit' value='New')
+
+  include parts/foot

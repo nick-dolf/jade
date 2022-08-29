@@ -1,0 +1,10 @@
+doctype html
+html(lang='en')
+
+  include parts/head
+  body
+    include parts/header.pug
+
+    div(class="grid")
+      each page in series
+        include components/card-image

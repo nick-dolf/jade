@@ -1,0 +1,11 @@
+mixin detail-item(id, content, rows)
+  li.list-group-item.d-flex.align-items-center.justify-content-between
+    h4.col-4= id
+    textarea.col-8(rows= rows cols="60" maxlength="150" name=id id=id)
+      = content
+
+h2.my-3 Page Details
+
+ul.list-group-flush
+  +detail-item('title', title, 1)
+  +detail-item('description', description, 3)

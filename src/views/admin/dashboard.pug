@@ -1,0 +1,36 @@
+mixin page-row(name)
+  li.list-group-item.d-flex.align-items-center.justify-content-between
+    a.h4.link-dark(href= "/series/" + name)= name
+    div
+      a.btn.btn-primary.mx-4(href="./pages/series/"+ name) Edit
+      a.btn.btn-danger(onclick="deletePage('" + name +  "')") Delete
+
+html
+  include parts/head
+
+  body.m-4
+    include parts/header
+
+    main
+      h2 /
+      ul(class="list-group-flush")
+        li(class="list-group-item d-flex justify-content-between align-items-center")
+          a.h4.link-dark(href="/") Home
+          a(href="./pages/home" class="btn btn-primary") Edit
+        li(class="list-group-item d-flex justify-content-between align-items-center")
+          a.h4.link-dark(href="/about/") About
+          a(href="./pages/about" class="btn btn-primary") Edit
+
+
+
+      h2 /series/
+      ul.list-group-flush
+        each page in pages
+          +page-row(page)
+
+        li.list-group-item
+          form.d-flex.justify-content-between(action='/admin/pages/series', method='POST')
+            input.form-control(type='text' name='name' id='name')
+            input.btn.btn-primary.ms-4(type='submit' value='Create')
+
+    include parts/foot.pug

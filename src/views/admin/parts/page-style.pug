@@ -1,0 +1,13 @@
+mixin style-item(label, id, value)
+  li.list-group-item.d-flex.align-items-center.justify-content-between
+    h4.col-4= label
+    input.col-8(type="color" name=id id=id value= value)
+
+
+h2 Style
+
+ul.list-group-flush
+  +style-item('Text Color', 'textColor', textColor)
+  +style-item('Hover Color', 'hoverColor', hoverColor)
+  +style-item('Top Gradient Color', 'topColor', topColor)
+  +style-item('Bottom Gradient Color', 'bottomColor', bottomColor)

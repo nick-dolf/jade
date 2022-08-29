@@ -1,0 +1,15 @@
+html
+  include parts/head
+  body.m-4
+    include parts/header
+
+    button.btn.btn-primary(onclick="updatePage('" + path + "')") Update
+    form(id="pageForm")
+      include parts/page-info
+      include parts/page-style
+
+      include sections/paragraphs
+      include sections/columns
+
+
+    include parts/foot
