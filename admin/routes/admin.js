@@ -13,8 +13,19 @@ const user = {
   password: process.env.PASS
 }
 
+router.use('/src/assets/css', express.static('src/assets/css'))
+
 router.get('/login', (req, res) => {
   res.render('admin/login', { heading: 'Login' })
+})
+
+router.post('/login', (req, res) => {
+  if (req.body.email === user.name && req.body.password === user.password) {
+    req.session.loggedin = true;
+    res.redirect('/admin/dashboard')
+  } else {
+    res.render('admin/login', { heading: 'Login', warning: 'incorrect credentials' })
+  }
 })
 
 router.use((req, res, next) => {
@@ -32,6 +43,7 @@ router.get('/', (req, res) => {
 
 router.use('/dashboard', require('./dashboard'))
 router.use('/pages', require('./pages'))
-router.use('/src/assets', express.static('src/assets'))
+router.use('/src/assets/images', express.static('src/assets/images'))
+router.use('/src/assets/js', express.static('src/assets/js'))
 
 module.exports = router
