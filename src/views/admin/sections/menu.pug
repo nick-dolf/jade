@@ -1,0 +1,7 @@
+h2.my-3 Menu
+ul.list-group-flush(id='menu')
+  li.list-group-item.d-flex
+    include ../components/card-image
+
+  li.list-group-item
+    button.btn.btn-primary(onclick=`newCardImage('test', 'menu')` type='button') Add

@@ -22,11 +22,15 @@ if (process.env.NODE_ENV === 'development') {
 app.set('view engine', 'pug');
 app.set('views', path.join(process.cwd(), 'src/views'))
 app.locals.pretty = true;
-app.locals.baseURL = process.env.BASE_URL || ""
 // Convert Markdown and sanitize the HTML
 app.locals.md = (data) => {
   return sanitizeHtml(marked.parse(data))
 }
+app.locals.site = {}
+app.locals.site.baseURL = process.env.BASE_URL || ""
+app.locals.site.series = build.getSeriesPages()
+
+console.log(app.locals)
 
 // Build
 build.renderSass();

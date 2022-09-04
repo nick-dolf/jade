@@ -37,7 +37,25 @@ function newTextBox(name, parentId) {
   const button = document.createElement('button')
   button.className = 'btn btn-danger'
   button.innerText = 'Delete'
-  button.onclick = () => removeListItem(event)
+  button.onclick = (event) => removeListItem(event)
+  li.appendChild(button)
+  parent.insertBefore(li, parent.children[index])
+}
+
+function newCardImage(name, parentId) {
+  const parent = document.getElementById(parentId)
+  const index = parent.children.length - 1
+
+  const li = document.createElement('li')
+  li.className = 'list-group-item d-flex align-items-start justify-content-between'
+  const text = document.createElement('textarea')
+  text.className = 'col-10'
+  text.name = name
+  li.appendChild(text)
+  const button = document.createElement('button')
+  button.className = 'btn btn-danger'
+  button.innerText = 'Delete'
+  button.onclick = (event) => removeListItem(event)
   li.appendChild(button)
   parent.insertBefore(li, parent.children[index])
 }

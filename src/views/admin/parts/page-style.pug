@@ -4,9 +4,7 @@ mixin style-item(label, id, value)
     input.col-8(type="color" name=id id=id value= value)
 
 
-h2 Style
-
-ul.list-group-flush
+ul.accordion-body.list-group-flush
   +style-item('Text Color', 'textColor', textColor)
   +style-item('Hover Color', 'hoverColor', hoverColor)
   +style-item('Top Gradient Color', 'topColor', topColor)

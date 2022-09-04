@@ -1,28 +1,32 @@
-mixin page-row(name)
-  li.list-group-item.d-flex.align-items-center.justify-content-between
-    a.h4.link-dark(href= "series/" + name)= name
-    div
-      a.btn.btn-primary.mx-4(href="/pages/series/"+ name) Edit
-      a.btn.btn-danger(onclick="deletePage('" + name +  "')") Delete
-
 html
   include parts/head
   body.m-4
     include parts/header
 
     button.btn.btn-primary(onclick="updatePage('" + path + "')") Update
-    form(id="pageForm")
-      include parts/page-info
-      include parts/page-style
+    form.accordion(id="pageForm")
+      div.accordion-item
+        h2.accordion-header(id="headingOne")
+          button.accordion-button.collapsed(
+            type="button"
+            data-bs-toggle="collapse" 
+            data-bs-target="#collapseOne"
+            ) Page Details
+        div.accordion-collapse.collapse(id="collapseOne")
+          include parts/page-info
 
-      h2.my-3 Menu
+      div.accordion-item
+        h2.accordion-header(id="headingTwo")
+          button.accordion-button.collapsed(
+            type="button"
+            data-bs-toggle="collapse" 
+            data-bs-target="#collapseTwo"
+            ) Page Styling
 
-      ul.list-group-flush
+        div.accordion-collapse.collapse(id="collapseTwo")
+          div.accordion-body
+            include parts/page-style
 
-        li.list-group-item
-          include components/card-image
-
-        li.list-group-item
-            input.btn.btn-primary.ms-4(type='submit' value='New')
+      include sections/menu
 
   include parts/foot

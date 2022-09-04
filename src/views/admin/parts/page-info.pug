@@ -4,8 +4,7 @@ mixin detail-item(id, content, rows)
     textarea.col-8(rows= rows cols="60" maxlength="150" name=id id=id)
       = content
 
-h2.my-3 Page Details
 
-ul.list-group-flush
+ul.list-group-flush.accordion-body
   +detail-item('title', title, 1)
   +detail-item('description', description, 3)
