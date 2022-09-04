@@ -14,6 +14,19 @@ if (process.env.NODE_ENV === 'development') {
   console.log("\nDev environment")
   // On production this will be served by NGINX
   app.use(express.static('site'))
+  // Live Reload
+  const livereload = require('livereload')
+  const liveReloadServer = livereload.createServer()
+  liveReloadServer.watch(path.join(__dirname, 'site'))
+
+  const connectLivereload = require('connect-livereload')
+  app.use(connectLivereload())
+
+  liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
+      liveReloadServer.refresh("/");
+    }, 100);
+  });
 } else if (process.env.NODE_ENV === 'staging') {
   console.log("\n Staging environment")
 }
