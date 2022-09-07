@@ -1,10 +1,19 @@
-mixin detail-item(id, content, rows)
-  li.list-group-item.d-flex.align-items-center.justify-content-between
-    h4.col-4= id
-    textarea.col-8(rows= rows cols="60" maxlength="150" name=id id=id)
-      = content
-
+mixin detail-item(id, content, rows, max, label, text)
+  li.list-group-item
+    div.row.gy-1
+      div.col-md-3
+        label.form-label.m-0= label
+        div.form-text.m-0= text
+      div.col-md-9
+        textarea.form-control(rows= rows cols="60" maxlength=max name=id id=id)
+          = content
 
 ul.list-group-flush.accordion-body
-  +detail-item('title', title, 1)
-  +detail-item('description', description, 3)
+  +detail-item('title', title, 2, 60,
+                'Title',
+                "Max 60 characters.")
+  +detail-item('description', description, 3, 150,
+                "Description",
+                "Max 150 characters.")
+  li.list-group-item 
+    small &#128712; Meta Tags. Important for Search Engine Optimization.

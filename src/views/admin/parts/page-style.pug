@@ -1,11 +1,27 @@
-mixin style-item(label, id, value)
-  li.list-group-item.d-flex.align-items-center.justify-content-between
-    h4.col-4= label
-    input.col-8(type="color" name=id id=id value= value)
-
+mixin style-item(id, content, label, text)
+  li.list-group-item
+    div.row.gy-1
+      div.col-md-3
+        label.form-label.m-0= label
+        div.form-text.m-0= text
+      div.col-md-9
+        input.form-control(type="color" name=id id=id value= value)
 
 ul.accordion-body.list-group-flush
-  +style-item('Text Color', 'textColor', textColor)
-  +style-item('Hover Color', 'hoverColor', hoverColor)
-  +style-item('Top Gradient Color', 'topColor', topColor)
-  +style-item('Bottom Gradient Color', 'bottomColor', bottomColor)
+  +style-item('textColor', textColor,
+              'Text Color', 
+              "Main color for text.")
+  +style-item('linkColor', linkColor,
+              'Link Color',
+              "Color of link on hover.")
+  +style-item('linkHoverColor', linkHoverColor,
+              'Hover Color',
+              "Color of link on hover.")
+  +style-item('topColor', topColor,
+              'Top Color',
+              "Top gradient color.")
+  +style-item('bottomColor', bottomColor,
+              'Bottom Color',
+              "Bottom gradient color.")
+  li.list-group-item 
+    small &#128712; Styles just this page.

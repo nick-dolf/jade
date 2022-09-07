@@ -1,7 +1,37 @@
-h2.my-3 Menu
-ul.list-group-flush(id='menu')
-  li.list-group-item.d-flex
-    include ../components/card-image
+mixin menu-item(id)
+  li.list-group-item
+    div.row.gy-1
+      div.col-md-3
+        label.form-label title
+        input.form-control
+        label link
+        select(class="form-select")
+          for page in site.series
+            option= page
+      div.col-md-6
+        img.img-fluid.img-thumbnail(
+          height=200 width=200 
+          src= site.baseURL + "/admin/src/assets/images/home/thumb/fieldwork.jpg")
+        button.btn.btn-primary(type="button"
+                                data-bs-toggle="modal" data-bs-target="#imageModal"
+                               ) Select
+      div.col-md-1
+        button.btn.btn-danger(onclick='removeListItem(event)') Delete
+
+ul.list-group-flush.accordion-body(id='menu')
+  +menu-item('tet')
 
   li.list-group-item
     button.btn.btn-primary(onclick=`newCardImage('test', 'menu')` type='button') Add
+
+  div.modal(id="imageModal" tabindex="-1" role="dialog")
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          h3.modal-title Select Image
+          button.close(type="button" data-bs-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
+        div.modal-body
+          p Herebe images
+        div.modal-footer
+          button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save 

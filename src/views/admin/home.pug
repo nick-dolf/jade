@@ -1,32 +1,33 @@
-html
-  include parts/head
-  body.m-4
-    include parts/header
-    p testererer
-    button.btn.btn-primary(onclick="updatePage('" + path + "')") Update
-    form.accordion(id="pageForm")
-      div.accordion-item
-        h2.accordion-header(id="headingOne")
-          button.accordion-button.collapsed(
-            type="button"
-            data-bs-toggle="collapse" 
-            data-bs-target="#collapseOne"
-            ) Page Details
-        div.accordion-collapse.collapse(id="collapseOne")
-          include parts/page-info
+extends layouts/default
 
-      div.accordion-item
-        h2.accordion-header(id="headingTwo")
-          button.accordion-button.collapsed(
-            type="button"
-            data-bs-toggle="collapse" 
-            data-bs-target="#collapseTwo"
-            ) Page Styling
+block main
+  form.accordion(id="pageForm")
+    div.accordion-item
+      h2.accordion-header(id="headingOne")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseOne"
+          ) Page Details
+      div.accordion-collapse.collapse(id="collapseOne")
+        include parts/page-info
 
-        div.accordion-collapse.collapse(id="collapseTwo")
-          div.accordion-body
-            include parts/page-style
+    div.accordion-item
+      h2.accordion-header(id="headingTwo")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseTwo"
+          ) Page Styling
+      div.accordion-collapse.collapse(id="collapseTwo")
+        include parts/page-style
 
-      include sections/menu
-
-  include parts/foot
+    div.accordion-item
+      h2.accordion-header(id="headingThree")
+        button.accordion-button(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseThree"
+          ) Menu
+      div.accordion-collapse(id="collapseThree")
+        include sections/menu

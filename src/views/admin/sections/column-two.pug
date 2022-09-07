@@ -1,0 +1,18 @@
+mixin paragraph(name, content)
+  li.list-group-item.d-flex.align-items-start.justify-content-between
+    textarea.col-10(name=name rows=20)
+      = content
+    button.btn.btn-danger(onclick='removeListItem(event)') Delete
+
+mixin addParagraph(name, parentId)
+  li.list-group-item
+    button.btn.btn-primary(onclick=`newTextBox('${name}', '${parentId}')` type='button') New
+
+ul.list-group-flush.accordion-body(id='column-2')
+  if columnTwo
+    if Array.isArray(columnTwo)
+      for content in columnTwo
+        +paragraph('columnTwo', content)
+    else
+      +paragraph('columnTwo', columnTwo)
+  +addParagraph('columnTwo','column-2')

@@ -29,9 +29,8 @@ script.
     event.preventDefault()
     event.target.parentElement.remove()
   }
-h2.my-3 Paragraphs
 
-ul.list-group-flush(id='paragraphs')
+ul.list-group-flush.accordion-body(id='paragraphs')
   for content, index in paragraphs
     +paragraph(content, index)
   +addParagraph

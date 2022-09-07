@@ -1,7 +1,24 @@
-html
-  include parts/head
-  body.m-4
-    include parts/header
-    include parts/page-info
+extends layouts/default
 
-    include parts/foot
+block main
+  form.accordion-(id="pageForm")
+    div.accordion-item
+      h2.accordion-header(id="headingOne")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseOne"
+          ) Page Details
+      div.accordion-collapse.collapse(id="collapseOne")
+        include parts/page-info
+
+    div.accordion-item
+      h2.accordion-header(id="headingTwo")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseTwo"
+          ) Page Styling
+      div.accordion-collapse.collapse(id="collapseTwo")
+        include parts/page-style
+

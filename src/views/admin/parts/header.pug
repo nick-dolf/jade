@@ -1,6 +1,10 @@
-header(class="border-bottom border-primary border-2 mb-4")
-  h1.d-flex.justify-content-between
-    span= heading
-      a.link-dark(href= path)= title
-    span
-      a.link-dark(href="/admin/dashboard") Admin
+header.bg-secondary.text-white.fixed-top
+  nav.p-3.d-flex.justify-content-between
+
+    h2
+        span= title
+
+        a.m-4.link.link-light(href="/admin/dashboard") DashBoard
+    div
+      button.btn.btn-primary(onclick="updatePage('" + path + "')") Update
+      button.ms-4.btn.btn-primary(onclick="updatePage('" + path + "')") Preview

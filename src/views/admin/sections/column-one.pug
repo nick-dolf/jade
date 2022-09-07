@@ -8,7 +8,6 @@ mixin addParagraph(name, parentId)
   li.list-group-item
     button.btn.btn-primary(onclick=`newTextBox('${name}', '${parentId}')` type='button') New
 
-h2.my-3 Column One
 ul.list-group-flush(id='column-1')
   if columnOne
     if Array.isArray(columnOne)
@@ -17,13 +16,3 @@ ul.list-group-flush(id='column-1')
     else
       +paragraph('columnOne', columnOne)
   +addParagraph('columnOne','column-1')
-
-h2.my-3 Column Two
-ul.list-group-flush(id='column-2')
-  if columnTwo
-    if Array.isArray(columnTwo)
-      for content in columnTwo
-        +paragraph('columnTwo', content)
-    else
-      +paragraph('columnTwo', columnTwo)
-  +addParagraph('columnTwo','column-2')
