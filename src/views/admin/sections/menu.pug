@@ -8,14 +8,15 @@ mixin menu-item(id)
         select(class="form-select")
           for page in site.series
             option= page
-      div.col-md-6
+      div.col-md-6.container
         img.img-fluid.img-thumbnail(
-          height=200 width=200 
+          height=150 width=150 
           src= site.baseURL + "/admin/src/assets/images/home/thumb/fieldwork.jpg")
         button.btn.btn-primary(type="button"
-                                data-bs-toggle="modal" data-bs-target="#imageModal"
-                               ) Select
-      div.col-md-1
+                                  data-bs-toggle="modal" data-bs-target="#imageModal"
+                                  onclick="setActive(event)"
+                                ) Select Image
+      div.col-md-2
         button.btn.btn-danger(onclick='removeListItem(event)') Delete
 
 ul.list-group-flush.accordion-body(id='menu')
@@ -24,14 +25,34 @@ ul.list-group-flush.accordion-body(id='menu')
   li.list-group-item
     button.btn.btn-primary(onclick=`newCardImage('test', 'menu')` type='button') Add
 
-  div.modal(id="imageModal" tabindex="-1" role="dialog")
-    div.modal-dialog
-      div.modal-content
-        div.modal-header
-          h3.modal-title Select Image
-          button.close(type="button" data-bs-dismiss="modal" aria-label="Close")
-            span(aria-hidden="true") &times;
-        div.modal-body
-          p Herebe images
-        div.modal-footer
-          button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save 
+div.modal(id="imageModal" tabindex="-1" role="dialog")
+  div.modal-dialog.modal-xl
+    div.modal-content
+      div.modal-header
+        h3.modal-title Select Image
+        button.close(type="button" data-bs-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times;
+      div.modal-body
+        for image in images
+          button.btn.m-1(type="button" onclick=`changeImg("${image}")`)
+            img.img-thumbnail(
+              height= 100 width=100
+              src= site.baseURL + "/admin/src/assets/images/home/thumb/" + image
+            )
+      div.modal-footer
+        button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save 
+
+script.
+  let active;
+
+  function setActive(event) {
+    active = event.target.parentNode;
+    console.log(active)
+  }
+
+  function changeImg(img) {
+    const imgTag = active.getElementsByTagName('img')[0]
+    imgTag.src = "!{site.baseURL}" + "/admin/src/assets/images/home/thumb/" + img
+    console.log(img)
+  }
+  

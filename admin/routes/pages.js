@@ -1,5 +1,6 @@
 const path = require('path')
 const fsPromises = require('fs').promises
+const fu = require('../utils/fileUtil')
 const multer = require('multer')
 const marked = require('marked')
 const upload = multer()
@@ -12,6 +13,7 @@ router.use(express.json())
 
 const pageDir = path.join(process.cwd(), 'src/pages/')
 const siteDir = path.join(process.cwd(), 'site/')
+const imageDir = path.join(process.cwd(), 'src/assets/images/')
 
 // Create Post
 router.post('/:path', (req, res) => {
@@ -47,11 +49,19 @@ router.post('/:path', (req, res) => {
 
 // Read GET
 router.get('/:name', (req, res) => {
-  const page = req.params.name + '.json'
+  const page = req.params.name
 
-  fsPromises.readFile(pageDir + page)
+  let pageData = {}
+  fsPromises.readFile(pageDir + page + '.json')
     .then(data => {
-      const pageData = JSON.parse(data)
+      pageData = JSON.parse(data)
+    })
+    .then(() => {
+      return fsPromises.readdir(imageDir + page + "/thumb/")
+    })
+    .then((images) => {
+      pageData.images = images
+      console.log(pageData)
       res.render('admin/' + pageData.template, pageData)
     })
     .catch(err => {

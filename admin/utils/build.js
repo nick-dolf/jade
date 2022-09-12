@@ -21,8 +21,6 @@ function getSeriesPages() {
   return files.map(file => {
     return path.parse(file).name
   })
-
-
 }
 
 module.exports = { renderSass, getSeriesPages };

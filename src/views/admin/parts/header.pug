@@ -2,9 +2,8 @@ header.bg-secondary.text-white.fixed-top
   nav.p-3.d-flex.justify-content-between
 
     h2
-        span= title
-
-        a.m-4.link.link-light(href="/admin/dashboard") DashBoard
+      a.m-2.link-light(href="/admin/dashboard") Dashboard
+      span /
+      a.m-2.link-light(href= path)= title
     div
-      button.btn.btn-primary(onclick="updatePage('" + path + "')") Update
-      button.ms-4.btn.btn-primary(onclick="updatePage('" + path + "')") Preview
+      button.btn.btn-primary(onclick="updatePage('" + path + "')") Save Changes
