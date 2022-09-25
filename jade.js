@@ -43,13 +43,6 @@ if (process.env.NODE_ENV === 'development') {
   console.log("\nStaging environment")
 }
 
-// Deal with baseUrl
-if (process.env.BASE_URL) {
-  app.use(process.env.BASE_URL, (req, res, next) => {
-    next();
-  })
-}
-
 // Set up Template Engine
 app.set('view engine', 'pug');
 app.set('views', path.join(process.cwd(), 'src/views'))

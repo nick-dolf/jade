@@ -22,7 +22,7 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
   if (req.body.email === user.name && req.body.password === user.password) {
     req.session.loggedin = true;
-    res.redirect('./dashboard')
+    res.redirect(process.env.BASE_URL + '/admin/dashboard')
   } else {
     res.render('admin/login', { heading: 'Login', warning: 'incorrect credentials' })
   }
@@ -38,8 +38,7 @@ router.use((req, res, next) => {
 })
 
 router.get('/', (req, res) => {
-
-  res.redirect(req.baseUrl + '/dashboard')
+  res.redirect(process.env.BASE_URL + '/admin/dashboard')
 })
 
 router.use('/dashboard', require('./dashboard'))
