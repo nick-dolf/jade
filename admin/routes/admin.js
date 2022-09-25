@@ -9,8 +9,8 @@ router.use(cookieSession({
 }))
 
 const user = {
-  name: process.env.USER,
-  password: process.env.PASS
+  name: process.env.APP_USER,
+  password: process.env.APP_PASS
 }
 
 router.use('/src/assets/css', express.static('src/assets/css'))
@@ -20,7 +20,6 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  console.log(req.body.email +':' + user.name + '-'+req.body.password+':'+user.password)
   if (req.body.email === user.name && req.body.password === user.password) {
     req.session.loggedin = true;
     res.redirect(process.env.BASE_URL + '/admin/dashboard')
