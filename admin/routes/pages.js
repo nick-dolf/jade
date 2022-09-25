@@ -61,7 +61,6 @@ router.get('/:name', (req, res) => {
     })
     .then((images) => {
       pageData.images = images
-      console.log(pageData)
       res.render('admin/' + pageData.template, pageData)
     })
     .catch(err => {
@@ -88,7 +87,7 @@ router.get('/:dir/:name', (req, res) => {
 router.put('/*', upload.none(), (req, res) => {
   let page = req.url.slice(1)
   if(!page) page = 'home'
-
+  console.log(req.body)
   fsPromises.readFile(pageDir + page + '.json')
     .then(data => {
       const pageData = JSON.parse(data)

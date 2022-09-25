@@ -1,11 +1,11 @@
-mixin menu-item(id)
+mixin menu-item(index,title, link)
   li.list-group-item
     div.row.gy-1
       div.col-md-3
         label.form-label title
-        input.form-control
+        input.form-control(name=`menu[${index}][title]` value=title)
         label link
-        select(class="form-select")
+        select(class="form-select" name=`menu[${index}][link]` value=link)
           for page in site.series
             option= page
       div.col-md-6.container
@@ -16,11 +16,10 @@ mixin menu-item(id)
                                   data-bs-toggle="modal" data-bs-target="#imageModal"
                                   onclick="setActive(event)"
                                 ) Select Image
-      div.col-md-2
-        button.btn.btn-danger(onclick='removeListItem(event)') Delete
 
 ul.list-group-flush.accordion-body(id='menu')
-  +menu-item('tet')
+  for item, index in menu
+    +menu-item(index, item.title, item.link)
 
   li.list-group-item
     button.btn.btn-primary(onclick=`newCardImage('test', 'menu')` type='button') Add
