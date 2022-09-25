@@ -54,10 +54,6 @@ app.locals.site = {}
 app.locals.site.baseURL = process.env.BASE_URL || ""
 app.locals.site.series = build.getSeriesPages()
 
-console.log(app.locals)
-
-
-
 // Build
 build.renderSass();
 
