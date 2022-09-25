@@ -1,3 +1,6 @@
+site
+src/pages
+
 # Logs
 logs
 *.log
