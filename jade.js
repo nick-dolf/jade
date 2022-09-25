@@ -32,8 +32,22 @@ if (process.env.NODE_ENV === 'development') {
 
   // Make html easy to read
   app.locals.pretty = true;
-} else if (process.env.NODE_ENV === 'staging') {
 
+  // log requests
+  app.use('/', (req, res, next) => {
+    console.log(req.url)
+    next();
+  })
+
+} else if (process.env.NODE_ENV === 'staging') {
+  console.log("\nStaging environment")
+}
+
+// Deal with baseUrl
+if (process.env.BASE_URL) {
+  app.use(process.env.BASE_URL, (req, res, next) => {
+    next();
+  })
 }
 
 // Set up Template Engine
@@ -49,10 +63,7 @@ app.locals.site.series = build.getSeriesPages()
 
 console.log(app.locals)
 
-app.use('/', (req, res, next) => {
-  console.log(req.url)
-  next();
-})
+
 
 // Build
 build.renderSass();
