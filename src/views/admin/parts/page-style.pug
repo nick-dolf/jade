@@ -1,11 +1,11 @@
-mixin style-item(id, content, label, text)
+mixin style-item(id, value, label, text)
   li.list-group-item
     div.row.gy-1
       div.col-md-3
         label.form-label.m-0= label
         div.form-text.m-0= text
       div.col-md-9
-        input.form-control(type="color" name=id id=id value= value)
+        input.form-control(type="color" name=id id=id value=value)
 
 ul.accordion-body.list-group-flush
   +style-item('textColor', textColor,

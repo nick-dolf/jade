@@ -1,8 +1,4 @@
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/assets/css/style.css')
-  body
-    include parts/header.pug
+extends layouts/default
 
-    p= description
+block main
+  p= description

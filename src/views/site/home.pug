@@ -1,10 +1,6 @@
-doctype html
-html(lang='en')
+extends layouts/default
 
-  include parts/head
-  body
-    include parts/header.pug
-
-    div(class="grid")
-      each page in series
-        include components/card-image
+block main
+  div(class="grid")
+    each page in menu
+      include components/card-image

@@ -1,10 +1,5 @@
-doctype html
-html(lang='en')
+extends layouts/default
 
-  include parts/head
-  body
-    include parts/header.pug
-
-    main
-      include sections/paragraphs
-      include sections/columns
+block main
+  include sections/paragraphs
+  include sections/columns
