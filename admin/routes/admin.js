@@ -38,7 +38,8 @@ router.use((req, res, next) => {
 })
 
 router.get('/', (req, res) => {
-  res.redirect('./dashboard')
+
+  res.redirect(req.baseUrl + '/dashboard')
 })
 
 router.use('/dashboard', require('./dashboard'))
