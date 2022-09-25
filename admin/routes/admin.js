@@ -20,6 +20,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+  console.log(req.body.email +':' + user.name + '-'+req.body.password+':'+user.password)
   if (req.body.email === user.name && req.body.password === user.password) {
     req.session.loggedin = true;
     res.redirect(process.env.BASE_URL + '/admin/dashboard')
