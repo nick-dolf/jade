@@ -1,8 +1,8 @@
 mixin page-row(name)
   li.list-group-item.d-flex.align-items-center.justify-content-between
-    a.h4.link-dark(href= "/series/" + name)= name
+    a.h4.link-dark(href= site.baseURL + "/series/" + name)= name
     div
-      a.btn.btn-primary.mx-4(href= site.baseURL + "/pages/series/"+ name) Edit
+      a.btn.btn-primary.mx-4(href= site.baseURL + "admin/pages/series/"+ name) Edit
       a.btn.btn-danger(onclick="deletePage('" + name +  "')") Delete
 
 html
@@ -15,11 +15,11 @@ html
       h2 /
       ul(class="list-group-flush")
         li(class="list-group-item d-flex justify-content-between align-items-center")
-          a.h4.link-dark(href="/") Home
-          a(href= site.baseURL + "/pages/home" class="btn btn-primary") Edit
+          a.h4.link-dark(href= site.baseURL + "/") Home
+          a(href= site.baseURL + "/admin/pages/home" class="btn btn-primary") Edit
         li(class="list-group-item d-flex justify-content-between align-items-center")
-          a.h4.link-dark(href="/about/") About
-          a(href= site.baseURL + "/pages/about" class="btn btn-primary") Edit
+          a.h4.link-dark(href= site.baseURL + "/about/") About
+          a(href= site.baseURL + "/admin/pages/about" class="btn btn-primary") Edit
 
 
 
@@ -29,7 +29,7 @@ html
           +page-row(page)
 
         li.list-group-item
-          form.d-flex.justify-content-between(action= site.baseURL '/admin/pages/series', method='POST')
+          form.d-flex.justify-content-between(action= site.baseURL + '/admin/pages/series', method='POST')
             input.form-control(type='text' name='name' id='name')
             input.btn.btn-primary.ms-4(type='submit' value='Create')
 
