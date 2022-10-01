@@ -8,7 +8,7 @@ const srcDir = path.join(process.cwd(), 'src/assets/images/home/original/')
 const destDir = path.join(process.cwd(), 'site/assets/images/home/')
 
 
-processAllImages();
+//processAllImages();
 
 function processImage(img) {
   sharp(srcDir + img)
