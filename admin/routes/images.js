@@ -6,9 +6,9 @@ const sharp = require('sharp')
 
 const srcDir = path.join(process.cwd(), 'src/assets/images/home/original/')
 const destDir = path.join(process.cwd(), 'site/assets/images/home/')
+const thumbDir = path.join(process.cwd(), 'src/assets/images/home/thumb/')
 
-
-//processAllImages();
+processAllImages();
 
 function processImage(img) {
   sharp(srcDir + img)
@@ -43,6 +43,7 @@ function processAllImages() {
   .then(entries => {
     entries.forEach((entry, i) => {
       processImage(entry)
+      processThumb(entry)
     });
 
   })
