@@ -5,7 +5,7 @@ const router = express.Router();
 const sharp = require('sharp')
 
 const srcDir = path.join(process.cwd(), 'src/assets/images/home/original/')
-const destDir = path.join(process.cwd(), 'src/assets/images/home/thumb/')
+const destDir = path.join(process.cwd(), 'site/assets/images/home/')
 
 
 processAllImages();
@@ -42,7 +42,7 @@ function processAllImages() {
   fs.promises.readdir(srcDir)
   .then(entries => {
     entries.forEach((entry, i) => {
-      processThumb(entry)
+      processImage(entry)
     });
 
   })

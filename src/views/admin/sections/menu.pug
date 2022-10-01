@@ -1,4 +1,4 @@
-mixin menu-item(index, title, link)
+mixin menu-item(index, title, link, image)
   li.list-group-item
     div.row.gy-1
       div.col-md-3
@@ -11,18 +11,20 @@ mixin menu-item(index, title, link)
       div.col-md-6.container
         img.img-fluid.img-thumbnail(
           height=150 width=150 
-          src= site.baseURL + "/admin/src/assets/images/home/thumb/fieldwork.jpg")
+          src= site.baseURL + "/admin/src/assets/images/home/thumb/" + image)
         button.btn.btn-primary(type="button"
                                   data-bs-toggle="modal" data-bs-target="#imageModal"
                                   onclick="setActive(event)"
                                 ) Select Image
+        input.form-control(name=`menu[${index}][image]` value=image type="hidden")
 
 ul.list-group-flush.accordion-body(id='menu')
   for item, index in menu
-    +menu-item(index, item.title, item.link)
+    +menu-item(index, item.title, item.link, item.image)
 
   li.list-group-item
-    button.btn.btn-primary(onclick=`newCardImage('test', 'menu')` type='button') Add
+    button.btn.btn-primary(onclick=`addMenuItem()` type='button') Add
+    button.btn.btn-danger(onclick=`deleteMenuItem()` type='button') Delete
 
 div.modal(id="imageModal" tabindex="-1" role="dialog")
   div.modal-dialog.modal-xl
@@ -46,12 +48,42 @@ script.
 
   function setActive(event) {
     active = event.target.parentNode;
-    console.log(active)
   }
 
   function changeImg(img) {
+    const imgInput = active.getElementsByTagName('input')[0]
+    imgInput.value = img
+    console.log(imgInput)
+
     const imgTag = active.getElementsByTagName('img')[0]
     imgTag.src = "!{site.baseURL}" + "/admin/src/assets/images/home/thumb/" + img
-    console.log(img)
   }
   
+  function deleteMenuItem() {
+    const menu = document.getElementById('menu')
+
+    const count = menu.childElementCount
+    menu.children[count-2].remove()
+  }
+
+  function addMenuItem() {
+    const menu = document.getElementById('menu')
+    const count = menu.childElementCount
+
+    const li = document.createElement('li')
+    li.className = 'list-group-item'
+    menu.insertBefore(li, menu.children[count-1])
+
+    const label = document.createElement('label')
+    label.className = 'form-label'
+    label.innerHTML = "Please Click Save!"
+
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = `menu[${count-1}][title]`
+    input.value = ""
+    
+    li.appendChild(label)
+    li.appendChild(input)
+
+  }
