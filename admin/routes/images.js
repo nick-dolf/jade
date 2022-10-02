@@ -31,7 +31,7 @@ function processThumb(img) {
       height: 400
     })
     .jpeg( {quality: 90})
-    .toFile(destDir + img)
+    .toFile(thumbDir + img)
 
     .catch(err => {
     console.error(err.message)
