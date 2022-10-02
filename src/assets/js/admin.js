@@ -3,7 +3,7 @@ function updatePage(page) {
   const data = new FormData(document.getElementById('pageForm'))
   axios.put("./" + page, data)
     .then( res => {
-      console.log(res)
+      location.reload()
     })
     .catch(err => {
       console.error(err.message)
