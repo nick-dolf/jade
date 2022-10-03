@@ -33,7 +33,7 @@ router.use((req, res, next) => {
     next()
   } else {
     req.session.original = req.url
-    res.redirect('/admin/login')
+    res.redirect(process.env.BASE_URL + '/admin/login')
   }
 })
 
