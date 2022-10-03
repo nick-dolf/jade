@@ -4,6 +4,7 @@ const fse = require('fs-extra')
 const multer = require('multer')
 const upload = multer()
 const app = require('../../jade')
+const build = require('../utils/build')
 const slugify = require('slugify')
 const express = require('express')
 const router = express.Router()
@@ -54,6 +55,7 @@ router.get('/:name', (req, res) => {
     })
     .then((images) => {
       pageData.images = images
+      pageData.seriesPages = build.getSeriesPages()
       res.render('admin/' + pageData.template, pageData)
     })
     .catch(err => {

@@ -6,7 +6,7 @@ mixin menu-item(index, title, link, image)
         input.form-control(name=`menu[${index}][title]` value=title)
         label link
         select(class="form-select" name=`menu[${index}][link]` value=link)
-          for page in site.series
+          for page in seriesPages
             option= page
       div.col-md-6.container
         img.img-fluid.img-thumbnail(
