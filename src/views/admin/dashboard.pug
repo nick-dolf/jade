@@ -27,8 +27,8 @@ html
           +page-row(page)
 
         li.list-group-item
-          form.d-flex.justify-content-between(action= site.baseURL + '/admin/pages/series', method='POST')
+          form.d-flex.justify-content-between(id="pageForm")
             input.form-control(type='text' name='name' id='name')
-            input.btn.btn-primary.ms-4(type='submit' value='Create')
+            button.btn.btn-primary.ms-4(type='button' onclick="createPage()") Create
 
     include parts/foot.pug

@@ -1,8 +1,7 @@
 const path = require('path')
 const fsPromises = require('fs').promises
-const fu = require('../utils/fileUtil')
+const fse = require('fs-extra')
 const multer = require('multer')
-const marked = require('marked')
 const upload = multer()
 const app = require('../../jade')
 const slugify = require('slugify')
@@ -17,6 +16,7 @@ const imageDir = path.join(process.cwd(), 'src/assets/images/')
 
 // Create Post
 router.post('/:path', (req, res) => {
+  console.log(req.body)
   const fileName = slugify(req.body.name, {lower: true})
   console.log(req.params.path)
 
@@ -24,27 +24,20 @@ router.post('/:path', (req, res) => {
     name: req.body.name,
     title: req.body.name,
     description: '',
-    path: req.params.path + '/' + fileName,
+    path: '/'+req.params.path+'/'+fileName,
     template: 'series',
   }
 
   // Save Page Data in JSON
-  fsPromises.writeFile(pageDir + pageData.path + '.json',
-                          JSON.stringify(pageData), {flag: 'wx'})
-    .catch(err => {
-      console.error(err.message)
-    })
-
-  // Create directory for pretty links and render html
-  fsPromises.mkdir(siteDir + pageData.path)
+  fse.outputJson(pageDir+pageData.path+'.json', pageData)
     .then(() => {
-      renderPage(pageData)
+      res.send('success')
     })
     .catch(err => {
       console.error(err.message)
     })
 
-  res.send(fileName)
+    renderPage(pageData)
 })
 
 // Read GET
@@ -87,7 +80,7 @@ router.get('/:dir/:name', (req, res) => {
 router.put('/*', upload.none(), (req, res) => {
   let page = req.url.slice(1)
   if(!page) page = 'home'
-  console.log(req.body)
+  console.log(page)
   fsPromises.readFile(pageDir + page + '.json')
     .then(data => {
       const pageData = JSON.parse(data)
@@ -133,7 +126,7 @@ function renderPage(page) {
     if (err) {
       console.error(err.message)
     } else {
-      fsPromises.writeFile(destination, html)
+      fse.outputFile(destination, html)
         .catch(err => {
           console.error(err.message)
         })

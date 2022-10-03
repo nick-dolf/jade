@@ -1,7 +1,21 @@
+// Create POST
+function createPage() {
+  const name = document.getElementById('name').value
+
+  axios.post("./pages/series", {"name": name})
+    .then(res => {
+      location.reload()
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+}
+
 // Update PUT
-function updatePage(page) {
+function updatePage() {
   const data = new FormData(document.getElementById('pageForm'))
-  axios.put("./" + page, data)
+  
+  axios.put("", data)
     .then( res => {
       location.reload()
     })
@@ -14,7 +28,10 @@ function updatePage(page) {
 function deletePage(page) {
   axios.delete("pages/series/" + page)
   .then( res => {
-    console.log(res)
+    location.reload()
+  })
+  .catch(err => {
+    console.error(err.message)
   })
 }
 
