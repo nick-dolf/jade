@@ -1,5 +1,5 @@
-mixin carousel(content)
-  h2 Carousel
+mixin grid(content)
+  h2 Grid
   for item in content
     img(src=site.baseURL + `/assets/images${path}/${item.image}`, alt="")
     p= item.title

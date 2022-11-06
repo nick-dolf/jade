@@ -1,18 +1,25 @@
 extends layouts/default
 include sections/text
 include sections/carousel
+include sections/grid
 
 block main
 
   if textOne
     +text(textOne)
+  if gridOne
+    +grid(gridOne)
   if carouselOne
     +carousel(carouselOne)
   if textTwo
     +text(textTwo)
+  if gridTwo
+    +grid(gridTwo)
   if carouselTwo
     +carousel(carouselTwo)
   if textThree
     +text(textThree)
+  if gridThree
+    +grid(gridThree)
   if carouselThree
     +carousel(carouselThree)
