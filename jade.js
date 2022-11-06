@@ -50,6 +50,7 @@ app.set('views', path.join(process.cwd(), 'src/views'))
 app.locals.md = (data) => {
   return sanitizeHtml(marked.parse(data))
 }
+app.locals.processImage = build.processImage
 app.locals.site = {}
 app.locals.site.baseURL = process.env.BASE_URL || ""
 app.locals.site.series = build.getSeriesPages()

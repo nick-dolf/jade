@@ -1,0 +1,4 @@
+mixin carousel(content)
+  for item in content
+    img(src=site.baseURL + `/assets/images${path}/${item.image}`, alt="")
+    != processImage(path,item.image)

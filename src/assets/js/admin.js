@@ -76,3 +76,34 @@ function newCardImage(name, parentId) {
   li.appendChild(button)
   parent.insertBefore(li, parent.children[index])
 }
+
+let activeImage
+
+function addImageItem (parent) {
+  const count = parent.childElementCount
+
+  const input = document.createElement('input')
+  input.type = "hidden"
+  input.name = `${parent.id}[${count-1}][title]`
+
+  parent.appendChild(input)
+  updatePage()
+}
+
+function deleteImageItem(parent) {
+  const count = parent.childElementCount
+  parent.children[count-2].remove()
+}
+
+function setActiveImage(event) {
+  activeImage = event.target.parentNode;
+}
+
+function changeImage(img) {
+  const imgInput = activeImage.getElementsByTagName('input')[0]
+  imgInput.value = img
+
+  const imgTag = activeImage.getElementsByTagName('img')[0]
+ 
+  imgTag.src = imgTag.src.substring(0, imgTag.src.lastIndexOf("/")) + "/" + img
+}

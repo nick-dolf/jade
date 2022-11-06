@@ -17,59 +17,52 @@ const imageDir = path.join(process.cwd(), 'src/assets/images/')
 
 // Create Post
 router.post('/:path', (req, res) => {
-  console.log(req.body)
-  const fileName = slugify(req.body.name, {lower: true})
-  console.log(req.params.path)
+  if(req.body.name != "") {
+    const fileName = slugify(req.body.name, {lower: true})
 
-  const pageData = {
-    name: req.body.name,
-    title: req.body.name,
-    description: '',
-    path: '/'+req.params.path+'/'+fileName,
-    template: 'series',
-  }
+    const pageData = {
+      name: req.body.name,
+      title: req.body.name,
+      description: '',
+      path: '/'+req.params.path+'/'+fileName,
+      template: 'series',
+    }
 
-  // Save Page Data in JSON
-  fse.outputJson(pageDir+pageData.path+'.json', pageData)
-    .then(() => {
-      res.send('success')
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+    // Save Page Data in JSON
+    fse.outputJson(pageDir+pageData.path+'.json', pageData)
+      .then(() => {
+        res.send('success')
+      })
+      .catch(err => {
+        console.error(err.message)
+      })
 
     renderPage(pageData)
+  } else {
+    res.send('Page name cannot be blank')
+  }
 })
 
 // Read GET
-router.get('/:name', (req, res) => {
-  const page = req.params.name
+router.get('*', (req, res) => {
+  const page = req.url
 
   let pageData = {}
-  fsPromises.readFile(pageDir + page + '.json')
-    .then(data => {
-      pageData = JSON.parse(data)
+  let images = {}
+  fse.readJson(imageDir + page + "/alt.json")
+    .then((data) => {
+      images = data
+    })
+    .catch(() =>{
+      images = {}
     })
     .then(() => {
-      return fsPromises.readdir(imageDir + page + "/thumb/")
+      return fse.readJson(pageDir + page + '.json')
     })
-    .then((images) => {
+    .then(data => {
+      pageData = data
       pageData.images = images
       pageData.seriesPages = build.getSeriesPages()
-      res.render('admin/' + pageData.template, pageData)
-    })
-    .catch(err => {
-      console.error(err.message)
-      res.status(404).render('404')
-    })
-})
-
-router.get('/:dir/:name', (req, res) => {
-  const page = req.params.dir + "/" + req.params.name
-
-  fsPromises.readFile(pageDir + page +'.json')
-    .then(data => {
-      const pageData = JSON.parse(data)
       res.render('admin/' + pageData.template, pageData)
     })
     .catch(err => {

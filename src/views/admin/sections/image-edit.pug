@@ -1,0 +1,11 @@
+li.list-group-item
+  div.row
+    div.col-md-3
+      img.img-fluid.img-thumbnail(
+            height=150 width=150 
+            src= site.baseURL+'/admin/src/assets/images'+path+'/thumb/'+fname)
+    div.col-md-6
+      label.form-label Alt Text
+      textarea.form-control(rows=2)= alt
+      label.form-label.mt-4= fname
+

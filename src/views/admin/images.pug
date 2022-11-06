@@ -1,0 +1,9 @@
+extends layouts/images
+
+block main
+  ul.list-group
+    include sections/image-upload
+
+  ul.list-group
+    each alt, fname in images
+      include sections/image-edit

@@ -1,6 +1,11 @@
 const fs = require('fs')
+const fse = require('fs-extra')
 const path = require('path')
 const sass = require('sass')
+const sharp = require('sharp')
+
+const imgSrcDir = path.join(process.cwd(), 'src/assets/images')
+const imgDestDir = path.join(process.cwd(), 'site/assets/images')
 
 function renderSass() {
   const main = path.join(process.cwd(), 'src/sass/main.scss')
@@ -23,4 +28,24 @@ function getSeriesPages() {
   })
 }
 
-module.exports = { renderSass, getSeriesPages };
+function processImage(path, img, width, height) {
+  console.log(imgSrcDir + path)
+  console.log(imgDestDir + path)
+
+  fse.mkdirs(imgDestDir + path)
+
+  sharp(imgSrcDir+path+'/original/'+img)
+    // .resize({
+    //   width: width,
+    //   height: height
+    // })
+    .jpeg( {quality: 90})
+    .toFile(imgDestDir+path+'/'+img)
+
+    .catch(err => {
+    console.error(err.message)
+  })
+
+}
+
+module.exports = { renderSass, getSeriesPages, processImage };

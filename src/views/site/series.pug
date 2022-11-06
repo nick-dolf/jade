@@ -1,5 +1,18 @@
 extends layouts/default
+include sections/text
+include sections/carousel
 
 block main
-  h1= title
-  p= description
+
+  if textOne
+    +text(textOne)
+  if carouselOne
+    +carousel(carouselOne)
+  if textTwo
+    +text(textTwo)
+  if carouselTwo
+    +carousel(carouselTwo)
+  if textThree
+    +text(textThree)
+  if carouselThree
+    +carousel(carouselThree)
