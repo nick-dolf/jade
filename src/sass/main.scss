@@ -4,10 +4,15 @@
 @import "base/global";
 @import "base/typography";
 
+@import "components/buttons";
 @import "components/cards";
+@import "components/modal";
 
 @import "layouts/footer";
 @import "layouts/header";
 @import "layouts/home";
 
+@import "sections/carousel";
 @import "sections/columns";
+@import "sections/image-grid";
+@import "sections/text";

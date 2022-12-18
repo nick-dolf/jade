@@ -1,3 +1,7 @@
+/*
+* PAGES
+*/
+
 // Create POST
 function createPage() {
   const name = document.getElementById('name').value
@@ -34,6 +38,64 @@ function deletePage(page) {
     console.error(err.message)
   })
 }
+
+/*
+* IMAGES
+*/
+
+// UPDATE (PUT)
+function updateImage(img) {
+
+  const imgForm = document.getElementById(img)
+  const imgButton = document.getElementById(img+'-btn')
+  const imgLi = document.getElementById(img+'-li')
+
+  const data = new FormData(imgForm)
+
+  imgButton.disabled = true
+  imgButton.firstChild.textContent = "Loading"
+  imgButton.lastChild.classList.remove("d-none")
+  
+  axios.put(img, data)
+  .then( res => {
+    
+    if(res.data != 'no change') {
+      imgLi.innerHTML = res.data.replaceAll("null", "")
+
+      imgButton.firstChild.textContent = "Updated!!"
+      imgButton.lastChild.classList.add("d-none")
+      setTimeout(() => {
+        imgButton.disabled = false
+        imgButton.firstChild.textContent = "Update"
+      }, 2000)
+    } else {
+      imgButton.disabled = false
+      imgButton.firstChild.textContent = "Update"
+      imgButton.lastChild.classList.add("d-none")
+    }
+ 
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
+
+}
+
+// DELETE
+function deleteImage(img) {
+  if(confirm('confirm delete?') == true) {
+    axios.delete(img)
+    .then( res => {
+      window.location.href = window.location.href
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+  }
+}
+
+
+
 
 //
 function removeListItem(event) {
@@ -79,20 +141,46 @@ function newCardImage(name, parentId) {
 
 let activeImage
 
-function addImageItem (parent) {
+function addImageItem (parentId) {
+  const parent = document.getElementById(parentId)
   const count = parent.childElementCount
 
-  const input = document.createElement('input')
-  input.type = "hidden"
-  input.name = `${parent.id}[${count-1}][title]`
+  const li = document.createElement('li')
+  li.className = "list-group-item"
+  li.innerHTML = `
+    <div class="row gy-1">
+        <div class="col-md-3">
+          <label class="form-label">title</label>
+          <input class="form-control" name="${parentId}[${count-1}][title]" value=""/>
+        </div>
+      <div class="col-md-6 container"><img class="img-fluid img-thumbnail" height="150" width="150" src=""/>
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="setActiveImage(event)">Select Image</button>
+        <input class="form-control" name="${parentId}[${count-1}][image]" value="" type="hidden"/>
+      </div>
+    </div>
+  `
+  const p = document.createElement('p')
 
-  parent.appendChild(input)
-  updatePage()
+  parent.insertBefore(li, parent.children[count-1])
+
+
 }
 
-function deleteImageItem(parent) {
+function deleteImageItem(parentId) {
+  const parent = document.getElementById(parentId)
   const count = parent.childElementCount
-  parent.children[count-2].remove()
+
+  if (count > 2) {
+    parent.children[count-2].remove()
+  } else if (count == 2) {
+    const input = document.createElement('input')
+    input.name = parent.id
+    input.type = "hidden"
+    input.id = parent.id+"-delete"
+    parent.children[count-2].remove()
+    parent.appendChild(input)
+    updatePage()
+  }
 }
 
 function setActiveImage(event) {
@@ -104,6 +192,8 @@ function changeImage(img) {
   imgInput.value = img
 
   const imgTag = activeImage.getElementsByTagName('img')[0]
- 
-  imgTag.src = imgTag.src.substring(0, imgTag.src.lastIndexOf("/")) + "/" + img
+  
+  const imDir = window.location.href.replace('/pages/', '/assets/images/')
+  console.log(imDir)
+  imgTag.src = imDir+"/modify/thumb/"+img
 }

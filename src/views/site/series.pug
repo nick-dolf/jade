@@ -5,21 +5,21 @@ include sections/grid
 
 block main
 
+  if carouselOne
+    +carousel(carouselOne, 'carouselOne')
   if textOne
     +text(textOne)
   if gridOne
     +grid(gridOne)
-  if carouselOne
-    +carousel(carouselOne)
+  if carouselTwo
+    +carousel(carouselTwo, 'carouselTwo')
   if textTwo
     +text(textTwo)
   if gridTwo
     +grid(gridTwo)
-  if carouselTwo
-    +carousel(carouselTwo)
+  if carouselThree
+    +carousel(carouselThree, 'carouselTwo')
   if textThree
     +text(textThree)
   if gridThree
     +grid(gridThree)
-  if carouselThree
-    +carousel(carouselThree)

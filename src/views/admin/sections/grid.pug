@@ -1,0 +1,25 @@
+mixin grid(name, content)
+  ul.list-group-flush.accordion-body(id=name)
+    if content
+      for item, index in content
+        +grid-item(name, index, item.subtext, item.image)
+    li.list-group-item
+      button.btn.btn-primary(onclick=`addImageItem('${name}')` type='button') Add
+      button.btn.btn-danger(onclick=`deleteImageItem('${name}')` type='button') Delete
+
+
+mixin grid-item(name, index, subtext, image)
+  li.list-group-item
+    div.row.gy-1
+      div.col-md-3
+        label.form-label Subtext
+        textarea.form-control(name=`${name}[${index}][subtext]` rows=4)= subtext
+      div.col-md-6.container
+        img.img-fluid.img-thumbnail(
+          height=150 width=150 
+          src= site.baseURL + `/admin/assets/images${path}/modify/thumb/${image}` )
+        button.btn.btn-primary(type="button"
+                                  data-bs-toggle="modal" data-bs-target="#imageModal"
+                                  onclick="setActiveImage(event)"
+                                ) Select Image
+        input.form-control(name=`${name}[${index}][image]` value=image type="hidden")

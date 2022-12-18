@@ -29,10 +29,8 @@ function getSeriesPages() {
 }
 
 function processImage(path, img, width, height) {
-  console.log(imgSrcDir + path)
-  console.log(imgDestDir + path)
-
   fse.mkdirs(imgDestDir + path)
+  const name = path.parse(img).name
 
   sharp(imgSrcDir+path+'/original/'+img)
     // .resize({
@@ -40,7 +38,7 @@ function processImage(path, img, width, height) {
     //   height: height
     // })
     .jpeg( {quality: 90})
-    .toFile(imgDestDir+path+'/'+img)
+    .toFile(imgDestDir+path+'/'+name)
 
     .catch(err => {
     console.error(err.message)

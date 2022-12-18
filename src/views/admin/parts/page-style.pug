@@ -5,7 +5,7 @@ mixin style-item(id, value, label, text)
         label.form-label.m-0= label
         div.form-text.m-0= text
       div.col-md-9
-        input.form-control(type="color" name=id id=id value=value)
+        input.form-control.form-control-color(type="color" name=id id=id value=value)
 
 ul.accordion-body.list-group-flush
   +style-item('textColor', textColor,

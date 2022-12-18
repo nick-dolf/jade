@@ -45,6 +45,7 @@ router.use('/dashboard', require('./dashboard'))
 router.use('/pages', require('./pages'))
 router.use('/images', require('./images'))
 router.use('/src/assets/images', express.static('src/assets/images'))
+router.use('/assets', express.static('assets'))
 router.use('/src/assets/js', express.static('src/assets/js'))
 
 module.exports = router

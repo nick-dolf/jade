@@ -1,5 +1,5 @@
 @mixin medium {
-  @media screen and (min-width: 599px) {
+  @media screen and (min-width: 699px) {
     @content
   }
 }
@@ -11,7 +11,7 @@
 }
 
 @mixin max {
-  @media screen and (min-width: 1199px) {
+  @media screen and (min-width: 1399px) {
     @content
   }
 }

@@ -1,6 +1,8 @@
 extends layouts/default
 include sections/text
 include sections/carousel
+include sections/grid
+
 
 block main
   li.list-group-item.d-flex.justify-content-end
@@ -55,7 +57,7 @@ block main
           data-bs-target="#collapseFive"
           ) Grid #1
       div.accordion-collapse.collapse(id="collapseFive")
-        +carousel('gridOne', gridOne)
+        +grid('gridOne', gridOne)
 
     div.accordion-item
       h2.accordion-header(id="headingSix")
@@ -85,7 +87,7 @@ block main
           data-bs-target="#collapseEight"
           ) Grid #2
       div.accordion-collapse.collapse(id="collapseEight")
-        +carousel('gridTwo', gridTwo)
+        +grid('gridTwo', gridTwo)
 
     div.accordion-item
       h2.accordion-header(id="headingNine")
@@ -115,7 +117,7 @@ block main
           data-bs-target="#collapseEleven"
           ) Grid #3
       div.accordion-collapse.collapse(id="collapseEleven")
-        +carousel('gridThree', gridThree)
+        +grid('gridThree', gridThree)
 
   div.modal(id="imageModal" tabindex="-1" role="dialog")
     div.modal-dialog.modal-xl
@@ -130,7 +132,7 @@ block main
               button.btn.m-1(type="button" onclick=`changeImage("${image}")`)
                 img.img-thumbnail(
                   height= 100 width=100
-                  src= site.baseURL + `/admin/src/assets/images${path}/thumb/${image}` 
+                  src= site.baseURL + `/admin/assets/images${path}/modify/thumb/${image}` 
                 )
         div.modal-footer
           button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save 

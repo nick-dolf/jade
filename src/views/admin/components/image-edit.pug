@@ -1,0 +1,70 @@
+div.row
+  .col-lg-4.d-flex.justify-content-center.align-items-start.justify-content-around
+    div
+      p.form-label Original
+      a(href=site.baseURL+'/admin/assets/images'+path+'/original/'+fname)
+        img.img-fluid.img-thumbnail(
+              height=200 width=200 
+              src= site.baseURL+'/admin/assets/images'+path+'/original/thumb/'+fname)
+    div
+      if object.modified
+        p.form-label Modified
+        a(href=site.baseURL+'/admin/assets/images'+path+'/modify/'+fname)
+          img.img-fluid.img-thumbnail(
+                height=200 width=200 
+                src= site.baseURL+'/admin/assets/images'+path+'/modify/thumb/'+fname)
+      else
+        p Not Modified
+  div.col-lg-8
+    div.d-flex.justify-content-between
+      label.form-label= `Original Image: ${object.origWidth} x ${object.origHeight} (W x H) `
+      label.form-label= `Filename: ${fname}`
+    form(id=`${folder}/${fname}` enctype="multipart/form-data")
+
+      div.bg-secondary.p-2.mb-2
+        label.form-label.text-white Crop (Height and Width both required)
+        div.row
+          div.col
+            div.input-group
+              label.input-group-text Width
+              input.form-control(name="extractWidth" type="number" value=object.extractWidth max=object.origWidth) 
+          div.col
+            div.input-group
+              label.input-group-text Height
+              input.form-control(name="extractHeight" type="number" value=object.extractHeight max=object.origHeight)
+          div.col
+            div.input-group
+              label.input-group-text Left
+              input.form-control(name="extractLeft" type="number" value=object.extractLeft) 
+          div.col
+            div.input-group
+              label.input-group-text Top
+              input.form-control(name="extractTop" type="number" value=object.extractTop)
+
+      div.bg-secondary.p-2.mb-2
+        label.form-label.text-white Resize 
+        div.row.row-cols-4
+          div.col
+            div.input-group
+              label.input-group-text Width
+              input.form-control(name="resizeWidth" type="number" value=object.resizeWidth) 
+          div.col
+            div.input-group
+              label.input-group-text Height
+              input.form-control(name="resizeHeight" type="number" value=object.resizeHeight)
+
+      div.input-group.mb-2
+        label.input-group-text.bg-secondary.text-white.w-15 Rotate
+        input.form-control(name="rotate" type="number" value=object.rotate)
+        label.input-group-text.bg-secondary.text-white Sharpen
+        label.input-group-text
+          if(object.sharpen)
+            input.form-check-input(name="sharpen" type="checkbox" value="2" checked="checked")
+          else
+            input.form-check-input(name="sharpen" type="checkbox" value="2")
+
+      div.input-group.mb-1 
+        label.input-group-text Alt Text
+        textarea.form-control(rows=2 name="alt")= object.alt
+
+      

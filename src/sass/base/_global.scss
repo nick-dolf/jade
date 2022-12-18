@@ -1,5 +1,5 @@
 body {
-  margin: 8px;
+  margin: 8px 0;
 
   @include medium {
     margin: 16px;
@@ -13,6 +13,11 @@ body {
     margin: 32px 64px;
   }
 
+  @media screen and (min-width:1528px) {
+   margin: 32px auto;
+  }
+
   min-height: 100vh;
   min-width: 320px;
+  max-width: 1400px;
 }

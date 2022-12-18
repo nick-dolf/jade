@@ -1,0 +1,56 @@
+.carousel {
+  position: relative;
+
+  .hidden {
+    display: none;
+  }
+
+  .subtitle {
+    margin-top: 0;
+    padding: 0 8px;
+
+    @include medium {
+      padding: 0;
+    }
+  }
+
+  .prev, .next, .boxes {
+    opacity: 0;
+    transition: opacity 1s;
+    position: absolute;
+  }
+
+  .prev, .next {
+    top: 40%;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  .boxes {
+    display: flex;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    gap: 12px;
+    padding: 4px;
+  }
+
+  .box {
+    height: 8px;
+    width: 8px;
+    border: 3px solid black;
+  }
+
+  .filled {
+    background-color: $black;
+  }
+}
+
+.carousel:hover {
+  .prev, .next, .boxes {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,3 @@
+mixin image(imgName)
+  - const toWebp = imgName.replace(/\.[^.]+$/, '.webp')
+    img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt="")

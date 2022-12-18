@@ -1,0 +1,38 @@
+.modal {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  padding: 8px;
+  background-color: rgba(11, 181, 193, .9);
+  color: white;
+  z-index: 2;
+
+
+  img {
+    max-width: 90vw;
+
+    @include medium {
+      max-width: 80vw;
+    }
+
+    @include max {
+      max-width: 1120px;
+    }
+  }
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-img-btn {
+  font-size: 0;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}

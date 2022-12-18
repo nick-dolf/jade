@@ -1,0 +1,7 @@
+.text {
+  padding: 0 8px;
+
+  @include medium {
+    padding: 0;
+  }
+}

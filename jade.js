@@ -34,10 +34,10 @@ if (process.env.NODE_ENV === 'development') {
   app.locals.pretty = true;
 
   // log requests
-  app.use('/', (req, res, next) => {
-    console.log(req.url)
-    next();
-  })
+  // app.use('/', (req, res, next) => {
+  //   console.log(req.url)
+  //   next();
+  // })
 
 } else if (process.env.NODE_ENV === 'staging') {
   console.log("\nStaging environment")

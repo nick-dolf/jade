@@ -5,5 +5,13 @@ block main
     include sections/image-upload
 
   ul.list-group
-    each alt, fname in images
-      include sections/image-edit
+    each object, fname in images
+      li.list-group-item
+        div(id=`${folder}/${fname}-li`)
+          include components/image-edit
+
+        div.d-flex.justify-content-between
+          button.btn.btn-danger(type="button" onclick=`deleteImage('${folder}/${fname}')`) Delete
+
+          button.btn.btn-primary(type="button" onclick=`updateImage('${folder}/${fname}')` id=`${folder}/${fname}-btn`) Update
+            span.ms-2.spinner-border.spinner-border-sm.d-none

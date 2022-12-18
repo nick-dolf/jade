@@ -1,6 +1,30 @@
-mixin carousel(content)
-  h2 Carousel
-  for item in content
-    img(src=site.baseURL + `/assets/images${path}/${item.image}`, alt="")
-    p= item.title
-    != processImage(path,item.image)
+mixin carousel(content, id)
+  section.carousel(id=id)
+    for item, index in content
+      if index == 0
+        div.slide
+          - const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
+          img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt="" width="100%")
+          p.subtitle
+            em= item.title
+      else
+        div.slide.hidden
+          - const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
+          img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt="" width="100%")
+          p.subtitle
+            em= item.title
+
+    button.btn-ghost.btn-img.prev(onclick=`prev("${id}", "${id}Index","${id}Active")`)
+      include ../components/chevron-left.pug
+    button.btn-ghost.btn-img.next(onclick=`next("${id}", "${id}Index","${id}Active")`)
+      include ../components/chevron-right.pug
+
+    div.boxes
+      for item, index in content
+        div.box
+
+    script.
+      var !{id}Active = true
+      var !{id}Index = 0
+      var test = 'my name'
+      slideShow("!{id}", "!{id}Index", "!{id}Active")

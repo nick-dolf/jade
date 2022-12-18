@@ -5,6 +5,13 @@ header {
 
   position: sticky;
   top: 0;
+
+  z-index: 3;
+
+  padding: 0 8px;
+  @include medium {
+    padding: 0;
+  }
 }
 
 .link-about {
@@ -17,6 +24,7 @@ header {
 
 .link-home {
   font-size: 3.2rem;
+  text-align: right;
 
   @include medium {
     font-size: 5rem;

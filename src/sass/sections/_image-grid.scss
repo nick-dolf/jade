@@ -1,0 +1,31 @@
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center; 
+  margin-bottom: 1rem;;
+  
+  @include medium {
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  
+  @include large {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  }
+
+}
+
+.image-container {
+  width: 100%;
+  object-fit: cover;
+  font-size: 0;
+
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    font-size: 1.6rem;
+  }
+}

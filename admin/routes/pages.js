@@ -13,9 +13,9 @@ router.use(express.json())
 
 const pageDir = path.join(process.cwd(), 'src/pages/')
 const siteDir = path.join(process.cwd(), 'site/')
-const imageDir = path.join(process.cwd(), 'src/assets/images/')
+const imageDir = path.join(process.cwd(), 'assets/images/')
 
-// Create Post
+// CREATE (POST)
 router.post('/:path', (req, res) => {
   if(req.body.name != "") {
     const fileName = slugify(req.body.name, {lower: true})
@@ -43,13 +43,13 @@ router.post('/:path', (req, res) => {
   }
 })
 
-// Read GET
+// READ (GET)
 router.get('*', (req, res) => {
   const page = req.url
 
   let pageData = {}
   let images = {}
-  fse.readJson(imageDir + page + "/alt.json")
+  fse.readJson(imageDir + page + "/details.json")
     .then((data) => {
       images = data
     })
@@ -71,11 +71,11 @@ router.get('*', (req, res) => {
     })
 })
 
-// Update PUT
+// UPDATE (PUT)
 router.put('/*', upload.none(), (req, res) => {
   let page = req.url.slice(1)
   if(!page) page = 'home'
-  console.log(page)
+
   fsPromises.readFile(pageDir + page + '.json')
     .then(data => {
       const pageData = JSON.parse(data)
@@ -95,7 +95,7 @@ router.put('/*', upload.none(), (req, res) => {
   res.send('ok')
 })
 
-// Delete DELETE
+// DELETE
 router.delete('/:dir/:name', (req, res) => {
   const page = req.params.dir + "/" + req.params.name
 

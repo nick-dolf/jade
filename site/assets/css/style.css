@@ -4,11 +4,12 @@
   font-display: swap;
 }
 body {
-  margin: 8px;
+  margin: 8px 0;
   min-height: 100vh;
   min-width: 320px;
+  max-width: 1400px;
 }
-@media screen and (min-width: 599px) {
+@media screen and (min-width: 699px) {
   body {
     margin: 16px;
   }
@@ -18,9 +19,14 @@ body {
     margin: 32px;
   }
 }
-@media screen and (min-width: 1199px) {
+@media screen and (min-width: 1399px) {
   body {
     margin: 32px 64px;
+  }
+}
+@media screen and (min-width: 1528px) {
+  body {
+    margin: 32px auto;
   }
 }
 
@@ -62,6 +68,15 @@ a:hover {
   color: var(--hover-color);
 }
 
+.btn-ghost {
+  all: unset;
+  cursor: pointer;
+}
+
+.btn-img {
+  font-size: 0;
+}
+
 .card h2 {
   margin-top: 0px;
   font-size: 30px;
@@ -82,6 +97,44 @@ a:hover {
   transition: object-position 0.6s ease-in-out;
 }
 
+.modal {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 8px;
+  background-color: rgba(11, 181, 193, 0.9);
+  color: white;
+  z-index: 2;
+}
+.modal img {
+  max-width: 90vw;
+}
+@media screen and (min-width: 699px) {
+  .modal img {
+    max-width: 80vw;
+  }
+}
+@media screen and (min-width: 1399px) {
+  .modal img {
+    max-width: 1120px;
+  }
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-img-btn {
+  font-size: 0;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -94,12 +147,19 @@ header {
   align-items: baseline;
   position: sticky;
   top: 0;
+  z-index: 3;
+  padding: 0 8px;
+}
+@media screen and (min-width: 699px) {
+  header {
+    padding: 0;
+  }
 }
 
 .link-about {
   font-size: 3.2rem;
 }
-@media screen and (min-width: 599px) {
+@media screen and (min-width: 699px) {
   .link-about {
     font-size: 5rem;
   }
@@ -107,8 +167,9 @@ header {
 
 .link-home {
   font-size: 3.2rem;
+  text-align: right;
 }
-@media screen and (min-width: 599px) {
+@media screen and (min-width: 699px) {
   .link-home {
     font-size: 5rem;
   }
@@ -125,11 +186,59 @@ header {
   }
 }
 
+.carousel {
+  position: relative;
+}
+.carousel .hidden {
+  display: none;
+}
+.carousel .subtitle {
+  margin-top: 0;
+  padding: 0 8px;
+}
+@media screen and (min-width: 699px) {
+  .carousel .subtitle {
+    padding: 0;
+  }
+}
+.carousel .prev, .carousel .next, .carousel .boxes {
+  opacity: 0;
+  transition: opacity 1s;
+  position: absolute;
+}
+.carousel .prev, .carousel .next {
+  top: 40%;
+}
+.carousel .next {
+  right: 0;
+}
+.carousel .boxes {
+  display: flex;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  gap: 12px;
+  padding: 4px;
+}
+.carousel .box {
+  height: 8px;
+  width: 8px;
+  border: 3px solid black;
+}
+.carousel .filled {
+  background-color: black;
+}
+
+.carousel:hover .prev, .carousel:hover .next, .carousel:hover .boxes {
+  opacity: 1;
+}
+
 .columns {
   display: flex;
   flex-direction: column;
 }
-@media screen and (min-width: 599px) {
+@media screen and (min-width: 699px) {
   .columns {
     flex-direction: row;
     gap: 32px;
@@ -141,4 +250,42 @@ header {
 
 .column {
   flex: 50%;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 699px) {
+  .image-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 999px) {
+  .image-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.image-container {
+  width: 100%;
+  object-fit: cover;
+  font-size: 0;
+}
+.image-container img {
+  width: 100%;
+  object-fit: cover;
+  font-size: 1.6rem;
+}
+
+.text {
+  padding: 0 8px;
+}
+@media screen and (min-width: 699px) {
+  .text {
+    padding: 0;
+  }
 }
