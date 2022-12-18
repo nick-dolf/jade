@@ -4,7 +4,7 @@ mixin grid(content)
   section.image-grid 
     for item in content
       div.image-container
-        button.modal-img-btn(onclick=`showModal("${item.image}")`)
+        button.modal-img-btn(onclick=`showModal("${item.image}")` aria-label="Display large version of image")
           +image(item.image)
       div.modal(id=item.image)
         +image(item.image)
