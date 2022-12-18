@@ -1,6 +1,18 @@
 @font-face {
   font-family: ChakraPetch;
-  src: url("../fonts/Chakra_Petch/ChakraPetch-Regular.ttf");
+  src: url("../fonts/Chakra_Petch/ChakraPetch-Regular.woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: ChakraPetch;
+  src: url("../fonts/Chakra_Petch/ChakraPetch-Bold.woff2");
+  font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: ChakraPetch;
+  src: url("../fonts/Chakra_Petch/ChakraPetch-Italic.woff2");
+  font-weight: italic;
   font-display: swap;
 }
 body {
@@ -35,7 +47,7 @@ html {
 }
 
 body {
-  font-family: ChakraPetch, helvetica;
+  font-family: ChakraPetch, Helvetica, sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
 }
@@ -215,7 +227,7 @@ header {
 .carousel .boxes {
   display: flex;
   position: absolute;
-  bottom: 16px;
+  top: 16px;
   left: 50%;
   transform: translate(-50%, 0);
   gap: 12px;

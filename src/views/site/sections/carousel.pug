@@ -14,9 +14,9 @@ mixin carousel(content, id)
           p.subtitle
             em= item.title
 
-    button.btn-ghost.btn-img.prev(onclick=`prev("${id}", "${id}Index","${id}Active")`)
+    button.btn-ghost.btn-img.prev(onclick=`prev("${id}", "${id}Index","${id}Active")` aria-label="Next image")
       include ../components/chevron-left.pug
-    button.btn-ghost.btn-img.next(onclick=`next("${id}", "${id}Index","${id}Active")`)
+    button.btn-ghost.btn-img.next(onclick=`next("${id}", "${id}Index","${id}Active")` aria-label="Previous image")
       include ../components/chevron-right.pug
 
     div.boxes

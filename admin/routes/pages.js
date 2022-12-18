@@ -84,6 +84,7 @@ router.put('/*', upload.none(), (req, res) => {
       keys.forEach((key, i) => {
         pageData[key] = req.body[key]
       })
+      console.log(pageData)
       renderPage(pageData)
       return(JSON.stringify(pageData))
     })
