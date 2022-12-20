@@ -4,7 +4,7 @@ const path = require('path')
 const sass = require('sass')
 const sharp = require('sharp')
 
-const imgSrcDir = path.join(process.cwd(), 'src/assets/images')
+const imgSrcDir = path.join(process.cwd(), 'assets/images')
 const imgDestDir = path.join(process.cwd(), 'site/assets/images')
 
 function renderSass() {
@@ -28,17 +28,20 @@ function getSeriesPages() {
   })
 }
 
-function processImage(path, img, width, height) {
-  fse.mkdirs(imgDestDir + path)
-  const name = path.parse(img).name
+function processImage(imgName, imgDetails, path, width, height) {
+  let srcImage = imgSrcDir+path+'/original/'+imgName
+  if (imgDetails.modified) {
+    srcImage = imgSrcDir+path+'/modify/'+imgName
+  }
+  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '.webp')
 
-  sharp(imgSrcDir+path+'/original/'+img)
-    // .resize({
-    //   width: width,
-    //   height: height
-    // })
-    .jpeg( {quality: 90})
-    .toFile(imgDestDir+path+'/'+name)
+  sharp(srcImage)
+    .resize({
+      width: width,
+      height: height
+    })
+    .webp()
+    .toFile(destImage)
 
     .catch(err => {
     console.error(err.message)

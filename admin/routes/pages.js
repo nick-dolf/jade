@@ -76,22 +76,18 @@ router.put('/*', upload.none(), (req, res) => {
   let page = req.url.slice(1)
   if(!page) page = 'home'
 
-  fsPromises.readFile(pageDir + page + '.json')
-    .then(data => {
-      const pageData = JSON.parse(data)
-      const keys = Object.keys(req.body)
+  const keys = Object.keys(req.body)
+  let data = fse.readJsonSync(pageDir + page + '.json')
+  let pageData = data
 
-      keys.forEach((key, i) => {
-        pageData[key] = req.body[key]
-      })
-      console.log(pageData)
-      renderPage(pageData)
-      return(JSON.stringify(pageData))
-    })
-    .then(data => fsPromises.writeFile(pageDir + page + '.json', data))
-    .catch(err => {
-      console.error(err.message)
-    })
+  keys.forEach((key, i) => {
+    pageData[key] = req.body[key]
+  })
+
+  fse.writeJsonSync(pageDir + page + '.json', data)
+  pageData.images = fse.readJsonSync(imageDir + page + '/details.json')
+
+  renderPage(pageData)
 
   res.send('ok')
 })

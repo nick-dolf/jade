@@ -2,18 +2,22 @@
   font-family: ChakraPetch;
   src: url("../fonts/Chakra_Petch/ChakraPetch-Regular.woff2");
   font-display: swap;
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: ChakraPetch;
   src: url("../fonts/Chakra_Petch/ChakraPetch-Bold.woff2");
-  font-weight: bold;
   font-display: swap;
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
   font-family: ChakraPetch;
   src: url("../fonts/Chakra_Petch/ChakraPetch-Italic.woff2");
-  font-weight: italic;
   font-display: swap;
+  font-weight: normal;
+  font-style: italic;
 }
 body {
   margin: 8px 0;
@@ -240,6 +244,14 @@ header {
 }
 .carousel .filled {
   background-color: black;
+}
+.carousel .slide {
+  object-fit: cover;
+}
+.carousel .slide img {
+  max-inline-size: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .carousel:hover .prev, .carousel:hover .next, .carousel:hover .boxes {

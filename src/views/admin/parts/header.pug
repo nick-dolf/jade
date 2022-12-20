@@ -6,4 +6,5 @@ header.bg-secondary.text-white.fixed-top
       span /
       a.m-2.link-light(href= site.baseURL + path)= title
     div
-      button.btn.btn-primary(onclick="updatePage('" + path + "')") Save Changes
+      button.btn.btn-primary(onclick="updatePage('" + path + "')" id="saveChanges") Save Changes
+        span.ms-2.spinner-border.spinner-border-sm.d-none

@@ -1,7 +1,8 @@
 li.list-group-item
-  form(method="POST" enctype="multipart/form-data")
+  form(method="POST" enctype="multipart/form-data" onsubmit="submitSpinner()")
     label.form-label(for="alt") Alt Text
     input.form-control(type="text" name="alt" )
 
     input.my-4.form-control(type="file" name="pic" required)
-    input.form-control(type="submit")
+    button.form-control(type="submit" id="submitButton") Submit
+      span.ms-2.spinner-border.spinner-border-sm.d-none

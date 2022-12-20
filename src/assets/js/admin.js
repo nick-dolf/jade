@@ -18,7 +18,12 @@ function createPage() {
 // Update PUT
 function updatePage() {
   const data = new FormData(document.getElementById('pageForm'))
-  
+  const saveButton = document.getElementById("saveChanges")
+
+  saveButton.disabled = true
+  saveButton.firstChild.textContent = "Loading"
+  saveButton.lastChild.classList.remove("d-none")
+
   axios.put("", data)
     .then( res => {
       location.reload()
@@ -42,6 +47,15 @@ function deletePage(page) {
 /*
 * IMAGES
 */
+// SUBMIT SPINNER
+function submitSpinner() { 
+  const submitButton = document.getElementById("submitButton")
+  console.log(submitButton)
+
+  submitButton.disabled = true
+  submitButton.firstChild.textContent = "Loading"
+  submitButton.lastChild.classList.remove("d-none")
+}
 
 // UPDATE (PUT)
 function updateImage(img) {
@@ -149,42 +163,74 @@ function addImageItem (parentId) {
   li.className = "list-group-item"
   li.innerHTML = `
     <div class="row gy-1">
-        <div class="col-md-3">
-          <label class="form-label">title</label>
-          <input class="form-control" name="${parentId}[${count-1}][title]" value=""/>
-        </div>
-      <div class="col-md-6 container"><img class="img-fluid img-thumbnail" height="150" width="150" src=""/>
+      <div class="col-md-4 container"><img class="img-fluid img-thumbnail" height="150" width="150" src=""/>
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="setActiveImage(event)">Select Image</button>
-        <input class="form-control" name="${parentId}[${count-1}][image]" value="" type="hidden"/>
+        <input class="form-control" name="${parentId}[0][image]" value="" type="hidden"/>
+      </div>
+      <div class="col-md-8">
+        <label class="form-label">title</label>
+        <textarea class="form-control" name="${parentId}[0][subtext]" rows=4/>**Bold**, date\ndescription\n*italic*</textarea>
       </div>
     </div>
+    <div class="d-flex justify-content-between pt-2">
+    <button class="btn btn-danger" type="button" onclick="deleteImageItem('${parentId}','0')">Delete</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="setActiveImage(event)">Select Image</button>
+  </div>
   `
-  const p = document.createElement('p')
+  parent.prepend(li)
 
-  parent.insertBefore(li, parent.children[count-1])
+  const listItems = parent.children
+  console.log(listItems)
+  Array.from(listItems).forEach((item, index) => {
+    item.getElementsByTagName('input')[0].name = `${parentId}[${index}][image]`
+    item.getElementsByTagName('textarea')[0].name = `${parentId}[${index}][subtext]`
 
-
+    item.getElementsByClassName('btn-danger')[0].setAttribute("onclick", `deleteImageItem('${parentId}','${index}')`)
+  })
 }
 
-function deleteImageItem(parentId) {
+function deleteImageItem(parentId, index) {
   const parent = document.getElementById(parentId)
   const count = parent.childElementCount
+  
+  console.log(count)
+  if (count > 1) {
+    const listItems = parent.children
+    listItems[index].remove()
 
-  if (count > 2) {
-    parent.children[count-2].remove()
-  } else if (count == 2) {
+    Array.from(listItems).forEach((item, index) => {
+      item.getElementsByTagName('input')[0].name = `${parentId}[${index}][image]`
+      item.getElementsByTagName('textarea')[0].name = `${parentId}[${index}][subtext]`
+
+      item.getElementsByClassName('btn-danger')[0].setAttribute("onclick", `deleteImageItem('${parentId}','${index}')`)
+    })
+  } else if (count == 1) {
     const input = document.createElement('input')
     input.name = parent.id
     input.type = "hidden"
     input.id = parent.id+"-delete"
-    parent.children[count-2].remove()
+    parent.children[0].remove()
     parent.appendChild(input)
     updatePage()
   }
+
+
+
+  // if (count > 2) {
+  //   parent.children[count-2].remove()
+  // } else if (count == 2) {
+  //   const input = document.createElement('input')
+  //   input.name = parent.id
+  //   input.type = "hidden"
+  //   input.id = parent.id+"-delete"
+  //   parent.children[count-2].remove()
+  //   parent.appendChild(input)
+  //   updatePage()
+  // }
 }
 
 function setActiveImage(event) {
-  activeImage = event.target.parentNode;
+  activeImage = event.target.parentNode.parentNode;
 }
 
 function changeImage(img) {

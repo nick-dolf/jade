@@ -47,6 +47,16 @@
   .filled {
     background-color: $black;
   }
+
+  .slide {
+    object-fit: cover;
+
+    img {
+      max-inline-size: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 
 .carousel:hover {

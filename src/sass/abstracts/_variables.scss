@@ -2,18 +2,22 @@
   font-family: ChakraPetch;
   src:  url('../fonts/Chakra_Petch/ChakraPetch-Regular.woff2');
   font-display: swap;
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: ChakraPetch;
   src:  url('../fonts/Chakra_Petch/ChakraPetch-Bold.woff2');
-  font-weight: bold;
   font-display: swap;
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
   font-family: ChakraPetch;
   src:  url('../fonts/Chakra_Petch/ChakraPetch-Italic.woff2');
-  font-weight: italic;
   font-display: swap;
+  font-weight: normal;
+  font-style: italic;
 }
 
 // Colors

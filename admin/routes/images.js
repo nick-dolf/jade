@@ -46,7 +46,7 @@ router.post('/:dir/:name', upload.single('pic'),(req, res) => {
       return imgProc.originalImage(fname, dir, destDir)
     })
     .then(() => {
-      data =  fse.readJsonSync(dir+'/details.json')
+      data = fse.readJsonSync(dir+'/details.json')
       data[fname] = newDetails
       fse.writeJsonSync(dir+'/details.json', data)
       return data
