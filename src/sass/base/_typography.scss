@@ -6,6 +6,7 @@ body {
   font-family: ChakraPetch, Helvetica, sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
+  color: var(--text-color)
 }
 
 h1 {
@@ -34,11 +35,10 @@ a {
 
 .link {
   text-decoration: none;
-  color: var(--text-color);
-
+  color: var(--link-color);
 
   &:hover {
     transition: color $speed-std ease-in-out;
-    color: var(--hover-color);
+    color: var(--link-hover-color);
   }
 }
