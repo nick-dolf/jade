@@ -6,13 +6,13 @@ mixin carousel(content, id)
         div.slide
           - const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
           img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt=images[item.image].alt width=1400 height=800)
-          p.subtitle
+          div.subtitle
             != md(item.subtext)
       else
         div.slide.hidden
           - const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
           img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt=images[item.image].alt width=1400 height=800 loading="lazy")
-          p.subtitle
+          div.subtitle
             != md(item.subtext)
 
     button.btn-ghost.btn-img.prev(onclick=`prev("${id}", "${id}Index","${id}Active")` aria-label="Next image")

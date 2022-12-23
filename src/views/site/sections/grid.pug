@@ -7,5 +7,7 @@ mixin grid(content)
         button.modal-img-btn(onclick=`showModal("${item.image}")` aria-label="Display large version of image")
           +image(item.image)
       div.modal(id=item.image)
-        +image(item.image)
-        != md(item.subtext.toString())
+        div.modal-content
+          +image(item.image)
+          div.subtext
+            != md(item.subtext.toString())

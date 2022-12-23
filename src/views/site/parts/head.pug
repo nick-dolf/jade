@@ -8,6 +8,7 @@ head
     body {
       --text-color: #{textColor};
       --hover-color: #{hoverColor};
+      --modal-color: #{toModalColor(modalColor)};
       background-image: linear-gradient(#{topColor}, #{bottomColor});
     }
   link(rel='preload' as="font" href=site.baseURL + '/assets/fonts/Chakra_Petch/ChakraPetch-Regular.woff2' crossorigin)

@@ -69,7 +69,7 @@ let activeModal = false
 function showModal(id) {
   if(!activeModal) {
     const modal = document.getElementById(id)
-    modal.style.display = "block"
+    modal.style.display = "flex"
   
     setTimeout(() =>{
       activeModal = modal
@@ -78,16 +78,8 @@ function showModal(id) {
 }
 
 window.onclick = function(event) {
-  if (activeModal) {
-    let target = event.target
-
-    do {
-      if (activeModal == target) {
-        return
-      }
-
-      target = target.parentNode
-    } while (target)
+  console.log(event.target)
+  if (activeModal == event.target) {
 
     activeModal.style.display = "none"
     activeModal = false;
