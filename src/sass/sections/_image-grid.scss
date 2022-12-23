@@ -1,4 +1,5 @@
 .image-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -18,6 +19,7 @@
 }
 
 .image-container {
+  position: relative;
   width: 100%;
   object-fit: cover;
   font-size: 0;

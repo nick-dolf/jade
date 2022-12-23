@@ -115,9 +115,10 @@ a:hover {
 
 .modal {
   display: none;
-  position: absolute;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
   padding: 8px;
   background-color: rgba(11, 181, 193, 0.9);
   color: white;
@@ -277,6 +278,7 @@ header {
 }
 
 .image-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -295,6 +297,7 @@ header {
 }
 
 .image-container {
+  position: relative;
   width: 100%;
   object-fit: cover;
   font-size: 0;

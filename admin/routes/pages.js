@@ -85,11 +85,18 @@ router.put('/*', upload.none(), (req, res) => {
   })
 
   fse.writeJsonSync(pageDir + page + '.json', data)
-  pageData.images = fse.readJsonSync(imageDir + page + '/details.json')
 
-  renderPage(pageData)
+  fse.readJson(imageDir + page + '/details.json')
+    .then(data => {
+      pageData.images = data
+      renderPage(pageData)
+      res.send('ok')
+    })
+    .catch(() => {
+      renderPage(pageData)
+      res.send('ok')
+    })
 
-  res.send('ok')
 })
 
 // DELETE
