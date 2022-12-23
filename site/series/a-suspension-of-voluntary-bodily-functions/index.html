@@ -1,155 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Suspension of Voluntary Bodily Functions</title>
-    <meta name="description" content="Queer Monsters addresses the imagery of &quot;monsters&quot; or &quot;creature features&quot; that stems from American horror films starting from 1930s.">
-    <style>
-      body {
-        --text-color: #6924bc;
-        --hover-color: ;
-        background-image: linear-gradient(#0bb5c1, #bcb610);
-      }
-    </style>
-    <link rel="preload" as="font" href="/assets/fonts/Chakra_Petch/ChakraPetch-Regular.woff2" crossorigin>
-    <link rel="preload" as="font" href="/assets/fonts/Chakra_Petch/ChakraPetch-Bold.woff2" crossorigin>
-    <link rel="preload" as="font" href="/assets/fonts/Chakra_Petch/ChakraPetch-Italic.woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <script src="/assets/js/script.js"></script>
-  </head>
-  <body>
-    <header><a class="link link-about" href="/about">About</a><a class="link link-home" href="/">Jade Yumang</a></header>
-    <main>
-      <section class="carousel" id="carouselOne">
-        <div class="slide"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/MutualCaressII2.webp" alt="sample" width="1400" height="800"/>
-          <p class="subtitle"><p><strong>Bold</strong>, date<br />description<br /><em>italic</em></p>
-
-          </p>
-        </div>
-        <div class="slide hidden"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/DandyCupidLegs.webp" alt="This alt text" width="1400" height="800" loading="lazy"/>
-          <p class="subtitle"><p><strong>Bold</strong>, date<br />description<br /><em>italic</em></p>
-
-          </p>
-        </div>
-        <div class="slide hidden"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2154.webp" alt="test" width="1400" height="800" loading="lazy"/>
-          <p class="subtitle"><p><strong>Bold</strong>, date<br />description<br /><em>italic</em></p>
-
-          </p>
-        </div>
-        <button class="btn-ghost btn-img prev" onclick="prev(&quot;carouselOne&quot;, &quot;carouselOneIndex&quot;,&quot;carouselOneActive&quot;)" aria-label="Next image">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px">
-            <path d="M 32 8 l -4 -4 l -16 16 l 16 16 l 4 -4 l -12 -12 L 32 8 z"></path>
-          </svg>
-        </button>
-        <button class="btn-ghost btn-img next" onclick="next(&quot;carouselOne&quot;, &quot;carouselOneIndex&quot;,&quot;carouselOneActive&quot;)" aria-label="Previous image">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px">
-            <path d="M 14 10 l 4 -4 l 16 16 l -16 16 l -4 -4 l 12 -12 L 14 10 z"></path>
-          </svg>
-        </button>
-        <div class="boxes">
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
-        </div>
-        <script>var carouselOneActive = true
-          var carouselOneIndex = 0
-          var test = 'my name'
-          slideShow("carouselOne", "carouselOneIndex", "carouselOneActive")
-        </script>
-      </section>
-      <section class="text"><p>Queer Monsters addresses the imagery of "monsters" or "creature features" that stems from American horror films starting from 1930s, which were used as a sign of difference and threat to conformity. The series focuses on the relationship of the queer body in the context of the embodied and manifested "monster" as visual and narrative challenge to that of a heteronormative milieu.</p>
-
-      </section>
-      <section class="image-grid"> 
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2154.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2154.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2154.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2154.webp" alt=""/><p>Fancy Image Title<br /><em>important details</em><br />more important details<br /><small>critical extra<small></small></small></p>
-
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2187.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2187.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2187.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2187.webp" alt=""/>
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2189.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2189.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2189.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2189.webp" alt=""/>
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2222.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2222.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2222.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2222.webp" alt=""/>
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2244.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2244.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2244.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2244.webp" alt=""/>
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2250.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2250.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2250.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2250.webp" alt=""/>
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2220.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2220.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2220.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2220.webp" alt=""/>
-        </div>
-      </section>
-      <section class="text"><p>Text Two sample</p>
-
-      </section>
-      <section class="image-grid"> 
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2255.JPG&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2255.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2255.JPG"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2255.webp" alt=""/><p>tet</p>
-
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2214.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2214.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2214.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2214.webp" alt=""/><p>estse</p>
-
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;DandyCupidLegs.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/DandyCupidLegs.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="DandyCupidLegs.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/DandyCupidLegs.webp" alt=""/><p>est</p>
-
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;MutualCaressII2.jpg&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/MutualCaressII2.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="MutualCaressII2.jpg"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/MutualCaressII2.webp" alt=""/><p>set</p>
-
-        </div>
-        <div class="image-container">
-          <button class="modal-img-btn" onclick="showModal(&quot;IMG_2227.JPG&quot;)" aria-label="Display large version of image"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2227.webp" alt=""/>
-          </button>
-        </div>
-        <div class="modal" id="IMG_2227.JPG"><img src="/assets/images/series/a-suspension-of-voluntary-bodily-functions/IMG_2227.webp" alt=""/><p>test</p>
-
-        </div>
-      </section>
-      <section class="text"><p>Text 3 sample</p>
-
-      </section>
-    </main>
-    <footer><span>© Jade Yumang</span><a href="https://nickdolf.com">webdev by nick</a></footer>
-  </body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>A Suspension of Voluntary Bodily Functions</title><meta name="description" content="This series addresses the imagery of &quot;monsters&quot; or &quot;creature features&quot; that stems from American horror films starting from 1930s."><style>body {
+  --text-color: #6924bc;
+  --hover-color: ;
+  background-image: linear-gradient(#0bb5c1, #bcb610);
+}</style><link rel="preload" as="font" href="/jade/assets/fonts/Chakra_Petch/ChakraPetch-Regular.woff2" crossorigin><link rel="preload" as="font" href="/jade/assets/fonts/Chakra_Petch/ChakraPetch-Bold.woff2" crossorigin><link rel="preload" as="font" href="/jade/assets/fonts/Chakra_Petch/ChakraPetch-Italic.woff2" crossorigin><link rel="stylesheet" href="/jade/assets/css/style.css"><script src="/jade/assets/js/script.js"></script></head><body><header><a class="link link-about" href="/jade/about">About</a><a class="link link-home" href="/jade/">Jade Yumang</a></header><main><section class="carousel" id="carouselOne"><div class="slide"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Reespite1.webp" alt="" width="1400" height="800"/><p class="subtitle"><p>Performed during the residency in <strong>Fire Island Artist Residency</strong>, NY, 2012<br /><em>Respite</em> [Performance]<br />Vinyl, cotton, fringe, yarn, and ceramic<br />Photo credit: AM DeBrincat</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Reespite2.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Fire Island Artist Residency</strong>, NY, 2012<br /><em>Respite</em> [Performance]<br />Vinyl, cotton, fringe, yarn, and ceramic<br />Photo credit: AM DeBrincat</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Reespite3.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Fire Island Artist Residency</strong>, Sunken Forest, NY, 2012<br /><em>Respite</em> [Performance]<br />Vinyl, cotton, fringe, yarn, and ceramic<br />Photo credit: AM DeBrincat</p>
+</p></div><button class="btn-ghost btn-img prev" onclick="prev(&quot;carouselOne&quot;, &quot;carouselOneIndex&quot;,&quot;carouselOneActive&quot;)" aria-label="Next image"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px"><path d="M 32 8 l -4 -4 l -16 16 l 16 16 l 4 -4 l -12 -12 L 32 8 z"></path></svg></button><button class="btn-ghost btn-img next" onclick="next(&quot;carouselOne&quot;, &quot;carouselOneIndex&quot;,&quot;carouselOneActive&quot;)" aria-label="Previous image"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px"><path d="M 14 10 l 4 -4 l 16 16 l -16 16 l -4 -4 l 12 -12 L 14 10 z"></path></svg></button><div class="boxes"><div class="box"></div><div class="box"></div><div class="box"></div></div><script>var carouselOneActive = true
+var carouselOneIndex = 0
+var test = 'my name'
+slideShow("carouselOne", "carouselOneIndex", "carouselOneActive")</script></section><section class="carousel" id="carouselTwo"><div class="slide"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Jaunt1.webp" alt="" width="1400" height="800"/><p class="subtitle"><p>Performed during the residency in <strong>Fire Island Artist Residency</strong>, "Meat Rack", NY, 2012<br /><em>A Jaunt through the Forest with Two Spirits</em> [Performance]<br />Handmade costume (chiffon) and performance with Nicolaus Chaffin<br />Photo credit: Evan Garza and Gordon Hall</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Jaunt3.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Fire Island Artist Residency</strong>, "Meat Rack", NY, 2012<br /><em>A Jaunt through the Forest with Two Spirits</em> [Performance]<br />Handmade costume (chiffon) and performance with Nicolaus Chaffin<br />Photo credit: Evan Garza and Gordon Hall</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Jaunt2.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Fire Island Artist Residency</strong>, "Meat Rack", NY, 2012<br /><em>A Jaunt through the Forest with Two Spirits</em> [Performance]<br />Handmade costume (chiffon) and performance with Nicolaus Chaffin<br />Photo credit: Evan Garza and Gordon Hall</p>
+</p></div><button class="btn-ghost btn-img prev" onclick="prev(&quot;carouselTwo&quot;, &quot;carouselTwoIndex&quot;,&quot;carouselTwoActive&quot;)" aria-label="Next image"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px"><path d="M 32 8 l -4 -4 l -16 16 l 16 16 l 4 -4 l -12 -12 L 32 8 z"></path></svg></button><button class="btn-ghost btn-img next" onclick="next(&quot;carouselTwo&quot;, &quot;carouselTwoIndex&quot;,&quot;carouselTwoActive&quot;)" aria-label="Previous image"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px"><path d="M 14 10 l 4 -4 l 16 16 l -16 16 l -4 -4 l 12 -12 L 14 10 z"></path></svg></button><div class="boxes"><div class="box"></div><div class="box"></div><div class="box"></div></div><script>var carouselTwoActive = true
+var carouselTwoIndex = 0
+var test = 'my name'
+slideShow("carouselTwo", "carouselTwoIndex", "carouselTwoActive")</script></section><section class="carousel" id="carouselTwo"><div class="slide"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Tweedy3.webp" alt="" width="1400" height="800"/><p class="subtitle"><p>Performed during the residency in <strong>Atlantic Center for the Arts</strong>, New Smyrna Beach, FL, 2012<br /><em>The Attack of the Tweed Dandy and its Dandlings</em> [Performance]<br />Tweed and floral dress shirt, human hair, yarn, and chicken wire<br />Performance and poem, “I Bring You” by Hunt Scarritt<br />75” x 30” x 25”</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Tweedy5.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Atlantic Center for the Arts</strong>, New Smyrna Beach, FL, 2012<br /><em>The Attack of the Tweed Dandy and its Dandlings</em> [Performance]<br />Tweed and floral dress shirt, human hair, yarn, and chicken wire<br />Performance and poem, “I Bring You” by Hunt Scarritt<br />75” x 30” x 25”</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Tweedy8.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Atlantic Center for the Arts</strong>, New Smyrna Beach, FL, 2012<br /><em>The Attack of the Tweed Dandy and its Dandlings</em> [Performance]<br />Tweed and floral dress shirt, human hair, yarn, and chicken wire<br />Performance and poem, “I Bring You” by Hunt Scarritt<br />75” x 30” x 25”</p>
+</p></div><div class="slide hidden"><img src="/jade/assets/images/series/a-suspension-of-voluntary-bodily-functions/Tweedy7.webp" alt="" width="1400" height="800" loading="lazy"/><p class="subtitle"><p>Performed during the residency in <strong>Atlantic Center for the Arts</strong>, New Smyrna Beach, FL, 2012<br /><em>The Attack of the Tweed Dandy and its Dandlings</em> [Performance]<br />Tweed and floral dress shirt, human hair, yarn, and chicken wire<br />Performance and poem, “I Bring You” by Hunt Scarritt<br />75” x 30” x 25”</p>
+</p></div><button class="btn-ghost btn-img prev" onclick="prev(&quot;carouselTwo&quot;, &quot;carouselTwoIndex&quot;,&quot;carouselTwoActive&quot;)" aria-label="Next image"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px"><path d="M 32 8 l -4 -4 l -16 16 l 16 16 l 4 -4 l -12 -12 L 32 8 z"></path></svg></button><button class="btn-ghost btn-img next" onclick="next(&quot;carouselTwo&quot;, &quot;carouselTwoIndex&quot;,&quot;carouselTwoActive&quot;)" aria-label="Previous image"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" stroke="white" fill="black" stroke-width="2px"><path d="M 14 10 l 4 -4 l 16 16 l -16 16 l -4 -4 l 12 -12 L 14 10 z"></path></svg></button><div class="boxes"><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div></div><script>var carouselTwoActive = true
+var carouselTwoIndex = 0
+var test = 'my name'
+slideShow("carouselTwo", "carouselTwoIndex", "carouselTwoActive")</script></section></main><footer><span>© Jade Yumang</span><a href="https://nickdolf.com">webdev by nick</a></footer></body></html>
