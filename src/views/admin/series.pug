@@ -45,9 +45,9 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseFour"
-          ) Text #1
+          )  Carousel #2
       div.accordion-collapse.collapse(id="collapseFour")
-        +text('textOne', textOne)
+        +carousel('carouselTwo', carouselTwo)
 
     div.accordion-item
       h2.accordion-header(id="headingFive")
@@ -55,9 +55,10 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseFive"
-          ) Grid #1
+          ) Text #1
       div.accordion-collapse.collapse(id="collapseFive")
-        +grid('gridOne', gridOne)
+        +text('textOne', textOne)
+
 
     div.accordion-item
       h2.accordion-header(id="headingSix")
@@ -65,9 +66,10 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseSix"
-          ) Carousel #2
+          ) Grid #1
       div.accordion-collapse.collapse(id="collapseSix")
-        +carousel('carouselTwo', carouselTwo)
+        +grid('gridOne', gridOne)
+
 
     div.accordion-item
       h2.accordion-header(id="headingSeven")
@@ -75,9 +77,10 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseSeven"
-          ) Text #2
+          ) Carousel #3
       div.accordion-collapse.collapse(id="collapseSeven")
-        +text('textTwo', textTwo)
+        +carousel('carouselThree', carouselThree)
+
 
     div.accordion-item
       h2.accordion-header(id="headingEight")
@@ -85,9 +88,11 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseEight"
-          ) Grid #2
+          ) Carousel #4
       div.accordion-collapse.collapse(id="collapseEight")
-        +grid('gridTwo', gridTwo)
+        +carousel('carouselFour', carouselFour)
+        
+
 
     div.accordion-item
       h2.accordion-header(id="headingNine")
@@ -95,9 +100,11 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseNine"
-          ) Carousel #3
+          ) Text #2
       div.accordion-collapse.collapse(id="collapseNine")
-        +carousel('carouselThree', carouselThree)
+        +text('textTwo', textTwo)
+        
+
 
     div.accordion-item
       h2.accordion-header(id="headingTen")
@@ -105,9 +112,11 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseTen"
-          ) Text #3
+          ) Grid #2
       div.accordion-collapse.collapse(id="collapseTen")
-        +text('textThree', textThree)
+        +grid('gridTwo', gridTwo)
+
+        
 
     div.accordion-item
       h2.accordion-header(id="headingEleven")
@@ -115,8 +124,39 @@ block main
           type="button"
           data-bs-toggle="collapse" 
           data-bs-target="#collapseEleven"
-          ) Grid #3
+          ) Carousel #5
       div.accordion-collapse.collapse(id="collapseEleven")
+        +carousel('carouselFive', carouselFive)
+
+
+    div.accordion-item
+      h2.accordion-header(id="headingTwelve")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseTwelve"
+          ) Carousel #6
+      div.accordion-collapse.collapse(id="collapseTwelve")
+        +carousel('carouselSix', carouselSix)
+
+    div.accordion-item
+      h2.accordion-header(id="headingThirteen")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseThirteen"
+          ) Text #3
+      div.accordion-collapse.collapse(id="collapseThirteen")
+        +text('textThree', textThree)
+
+    div.accordion-item
+      h2.accordion-header(id="headingFourteen")
+        button.accordion-button.collapsed(
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#collapseFourteen"
+          ) Grid #3
+      div.accordion-collapse.collapse(id="collapseFourteen")
         +grid('gridThree', gridThree)
 
   div.modal(id="imageModal" tabindex="-1" role="dialog")

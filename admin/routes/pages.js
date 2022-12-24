@@ -80,6 +80,8 @@ router.put('/*', upload.none(), (req, res) => {
   let data = fse.readJsonSync(pageDir + page + '.json')
   let pageData = data
 
+  
+
   keys.forEach((key, i) => {
     pageData[key] = req.body[key]
   })
@@ -94,7 +96,11 @@ router.put('/*', upload.none(), (req, res) => {
     })
     .catch(() => {
       renderPage(pageData)
-      res.send('ok')
+      console.log(req.body)
+      setTimeout(() => {
+
+        res.send('ok')
+      }, 3000)
     })
 
 })

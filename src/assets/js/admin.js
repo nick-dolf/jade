@@ -20,13 +20,16 @@ function updatePage() {
   const data = new FormData(document.getElementById('pageForm'))
   const saveButton = document.getElementById("saveChanges")
 
+  for (const [key, value] of data) {
+    console.log(`${key}: ${value}\n`)
+  }
   saveButton.disabled = true
   saveButton.firstChild.textContent = "Loading"
   saveButton.lastChild.classList.remove("d-none")
 
   axios.put("", data)
     .then( res => {
-      location.reload()
+      console.log(res)
     })
     .catch(err => {
       console.error(err.message)
