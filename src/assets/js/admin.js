@@ -29,7 +29,7 @@ function updatePage() {
 
   axios.put("", data)
     .then( res => {
-      console.log(res)
+      location.reload()
     })
     .catch(err => {
       console.error(err.message)
