@@ -3,11 +3,15 @@ include ../components/image
 mixin grid(content)
   section.image-grid 
     for item in content
-      div.image-container
-        button.modal-img-btn(onclick=`showModal("${item.image}")` aria-label="Display large version of image")
-          +image(item.image)
-      div.modal(id=item.image)
-        div.modal-content
-          +image(item.image)
-          div.subtext
-            != md(item.subtext.toString())
+      - 
+        const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
+        let imgHeight = parseInt(460 / images[item.image].origWidth * images[item.image].origHeight)
+        processGridImage(item.image, images[item.image], path, 460, imgHeight)
+      button.modal-img-btn(onclick=`showModal('${site.baseURL}/assets/images${path}/${toWebp}', "${encodeURIComponent(md(item.subtext.toString()))}")` 
+                          aria-label="Display large version of image")
+        +image(item.image, 460, imgHeight, images[item.image].alt)
+      //- div.modal(id=item.image)
+      //-   div.modal-content
+      //-     +image(item.image)
+      //-     div.subtext
+      //-       != md(item.subtext.toString())

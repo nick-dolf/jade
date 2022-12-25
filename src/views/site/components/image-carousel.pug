@@ -1,0 +1,7 @@
+mixin image-carousel(imgName, alt)
+  - var dir = site.baseURL + `/assets/images${path}/`
+  - const name = dir + imgName.replace(/\.[^.]+$/, '')
+
+  img(src=name+'-1400w.webp' alt=alt width=1400 height=800
+      srcset=name+'-350w.webp 350w, ' + name+'-700w.webp 700w, ' + name+'-1050w.webp 1050w, ' + name+'-1400w.webp 1400w'
+    )

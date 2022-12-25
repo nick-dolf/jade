@@ -21,3 +21,8 @@ body {
   min-width: 320px;
   max-width: 1400px;
 }
+
+
+main section:first-child {
+  margin-top: 0;
+}

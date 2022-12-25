@@ -2,4 +2,10 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+
+  padding: 0 8px;
+
+  @include medium {
+    padding: 0;
+  }
 }

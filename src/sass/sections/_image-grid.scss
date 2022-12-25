@@ -2,9 +2,10 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 12px;
   align-items: center; 
-  margin-bottom: 1rem;;
+  margin: 24px 0;
+  width: 100%;
   
   @include medium {
     grid-template-columns: 1fr 1fr;

@@ -1,5 +1,8 @@
 .text {
+  margin: 24px 0;
   padding: 0 8px;
+
+  font-size: 1.8rem;
 
   @include medium {
     padding: 0;

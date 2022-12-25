@@ -28,26 +28,79 @@ function getSeriesPages() {
   })
 }
 
-function processImage(imgName, imgDetails, path, width, height) {
+function processImage(imgName, imgDetails, path) {
   let srcImage = imgSrcDir+path+'/original/'+imgName
   if (imgDetails.modified) {
     srcImage = imgSrcDir+path+'/modify/'+imgName
   }
-  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '.webp')
+  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '')
+
 
   sharp(srcImage)
     .resize({
-      width: width,
-      height: height
+      width: 1400,
+      height: 800
     })
     .webp()
-    .toFile(destImage)
+    .toFile(destImage+'-1400w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
 
+  sharp(srcImage)
+    .resize({
+      width: 1050,
+      height: 600
+    })
+    .webp()
+    .toFile(destImage+'-1050w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 700,
+      height: 400
+    })
+    .webp()
+    .toFile(destImage+'-700w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 350,
+      height: 200
+    })
+    .webp()
+    .toFile(destImage+'-350w.webp')
     .catch(err => {
     console.error(err.message)
   })
 
 }
+
+function processGridImage(imgName, imgDetails, path, width, height) {
+  let srcImage = imgSrcDir+path+'/original/'+imgName
+
+  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '-460.webp')
+
+  sharp(srcImage)
+    .resize({
+      width: width,
+      height: height,
+    })
+    .webp()
+    .toFile(destImage)
+    .catch(err => {
+    console.error(err.message)
+  })
+
+}
+
+
 
 function toModalColor(hex) {
   const r = parseInt(hex.slice(1, 3), 16)
@@ -58,4 +111,4 @@ function toModalColor(hex) {
 }
 
 
-module.exports = { renderSass, getSeriesPages, processImage, toModalColor };
+module.exports = { renderSass, getSeriesPages, processImage, processGridImage, toModalColor };

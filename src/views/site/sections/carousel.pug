@@ -1,17 +1,18 @@
+include ../components/image-carousel
+include ../components/image-carousel-lazy
+
 mixin carousel(content, id)
   section.carousel(id=id)
     for item, index in content
-      - processImage(item.image, images[item.image], path, 1400, 800)
+      - processImage(item.image, images[item.image], path)
       if index == 0
         div.slide
-          - const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
-          img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt=images[item.image].alt width=1400 height=800)
+          +image-carousel(item.image, images[item.image].alt)
           div.subtitle
             != md(item.subtext)
       else
         div.slide.hidden
-          - const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
-          img(src=site.baseURL + `/assets/images${path}/${toWebp}`, alt=images[item.image].alt width=1400 height=800 loading="lazy")
+          +image-carousel-lazy(item.image, images[item.image].alt)
           div.subtitle
             != md(item.subtext)
 

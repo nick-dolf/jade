@@ -4,6 +4,12 @@
     margin-top: 0px;
     font-size: 30px;
     font-weight: normal;
+
+    padding: 0 8px;
+
+    @include medium {
+      padding: 0;
+    }
   }
 
 

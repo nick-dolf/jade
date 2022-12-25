@@ -66,11 +66,17 @@ function prev(id, index, active) {
 */
 let activeModal = false
 
-function showModal(id) {
+function showModal(image, subtext) {
   if(!activeModal) {
-    const modal = document.getElementById(id)
+    const modal = document.getElementById('modal')
     modal.style.display = "flex"
-  
+    const img = modal.getElementsByTagName('img')[0]
+
+    const sub = document.getElementsByClassName('subtext')[0]
+
+    img.src= image
+    sub.innerHTML = decodeURIComponent(subtext)
+
     setTimeout(() =>{
       activeModal = modal
     }, 100)
@@ -78,7 +84,6 @@ function showModal(id) {
 }
 
 window.onclick = function(event) {
-  console.log(event.target)
   if (activeModal == event.target) {
 
     activeModal.style.display = "none"
