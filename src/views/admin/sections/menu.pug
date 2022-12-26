@@ -37,11 +37,11 @@ div.modal(id="imageModal" tabindex="-1" role="dialog")
         button.close(type="button" data-bs-dismiss="modal" aria-label="Close")
           span(aria-hidden="true") &times;
       div.modal-body
-        for image in images
+        for alt, image in images
           button.btn.m-1(type="button" onclick=`changeImg("${image}")`)
             img.img-thumbnail(
               height= 100 width=100
-              src= site.baseURL + "/admin/src/assets/images/home/thumb/" + image
+              src= site.baseURL + "/admin/assets/images/home/modify/thumb/" + image
             )
       div.modal-footer
         button.btn.btn-primary(type="button" data-bs-dismiss="modal") Save 

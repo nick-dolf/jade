@@ -100,7 +100,48 @@ function processGridImage(imgName, imgDetails, path, width, height) {
 
 }
 
+function processMenuImage(imgName, imgDetails, path) {
+  let srcImage = imgSrcDir+path+'/original/'+imgName
+  if (imgDetails.modified) {
+    srcImage = imgSrcDir+path+'/modify/'+imgName
+  }
+  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '')
 
+  sharp(srcImage)
+    .resize({
+      width: 1100,
+      height: 825
+    })
+    .webp()
+    .toFile(destImage+'-1100w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 800,
+      height: 600
+    })
+    .webp()
+    .toFile(destImage+'-800w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 400,
+      height: 300
+    })
+    .webp()
+    .toFile(destImage+'-400w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+
+}
 
 function toModalColor(hex) {
   const r = parseInt(hex.slice(1, 3), 16)
@@ -111,4 +152,4 @@ function toModalColor(hex) {
 }
 
 
-module.exports = { renderSass, getSeriesPages, processImage, processGridImage, toModalColor };
+module.exports = { renderSass, getSeriesPages, processImage, processGridImage, toModalColor, processMenuImage };

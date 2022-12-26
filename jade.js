@@ -52,6 +52,7 @@ app.locals.md = (data) => {
 }
 app.locals.processImage = build.processImage
 app.locals.processGridImage = build.processGridImage
+app.locals.processMenuImage = build.processMenuImage
 app.locals.toModalColor = build.toModalColor
 app.locals.site = {}
 app.locals.site.baseURL = process.env.BASE_URL || ""

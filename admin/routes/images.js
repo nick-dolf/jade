@@ -24,15 +24,20 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 // CREATE (POST)
-router.post('/:dir/:name', upload.single('pic'),(req, res) => {
+router.post('/*', upload.single('pic'),(req, res) => {
   const dir = imgSrcDir + req.url
   const destDir = imgDestDir + req.url
   const fname = slugify(req.file.filename)
+  const params = req.url.split('/')
 
   let renderData = {
     "images" : "", 
     "path" : req.url, 
-    "folder" : req.params.name
+  }
+  if (params.length == 2) {
+    renderData.folder = params[1]
+  } else {
+    renderData.folder = params[2]
   }
 
   let data = {}
@@ -65,13 +70,18 @@ router.post('/:dir/:name', upload.single('pic'),(req, res) => {
 })
 
 // READ (GET)
-router.get('/:dir/:name', (req, res) => {
+router.get('/*', (req, res) => {
   const dir = imgSrcDir + req.url
+  const params = req.url.split('/')
 
   let renderData = {
     "images" : "", 
     "path" : req.url, 
-    "folder" : req.params.name
+  }
+  if (params.length == 2) {
+    renderData.folder = params[1]
+  } else {
+    renderData.folder = params[2]
   }
 
   fse.readJson(dir+'/details.json')
@@ -85,19 +95,25 @@ router.get('/:dir/:name', (req, res) => {
 })
 
 // UPDATE (PUT)
-router.put('/:series/:dir/:name', upload.none(), (req, res) => {
-  const dir = `${imgSrcDir}/series/${req.params.dir}`
-  const destDir = `${imgDestDir}/series/${req.params.dir}`
-
-  const fname = req.params.name
+router.put('/*', upload.none(), (req, res) => {
+  const dir = imgSrcDir + req.url.substring(0, req.url.lastIndexOf('/'))
+  const destDir = imgDestDir + req.url.substring(0, req.url.lastIndexOf('/'))
+  const fname = req.url.substring(req.url.lastIndexOf('/')+1)
+  const params = req.url.split('/')
 
   let renderData = {
-    "fname" : req.params.name, 
-    "path" : `/${req.params.series}/${req.params.dir}`, 
-    "folder" : path.parse(req.params.dir).name
+    "fname" : fname,
+    "images" : "", 
+    "path" : req.url.substring(0, req.url.lastIndexOf('/')), 
+  }
+  if (params.length == 2) {
+    renderData.folder = params[1]
+  } else {
+    renderData.folder = params[2]
   }
 
   const data =  fse.readJsonSync(dir+'/details.json')
+
   data[fname].alt = req.body.alt
   data[fname].extractWidth = parseInt(req.body.extractWidth)
   data[fname].extractHeight = parseInt(req.body.extractHeight) 
@@ -107,9 +123,9 @@ router.put('/:series/:dir/:name', upload.none(), (req, res) => {
   data[fname].resizeHeight = parseInt(req.body.resizeHeight)
   data[fname].rotate = parseInt(req.body.rotate)
   data[fname].sharpen = parseInt(req.body.sharpen)
-  
-  console.log(data[fname].extractWidth)
-  console.log(data[fname].extractHeight)
+
+  console.log(data[fname])
+
   // Make Sure Extract Region Is Not Too Large
   data[fname].extractWidth =  (data[fname].extractWidth + data[fname].extractLeft) > data[fname].origWidth ? 
                               (data[fname].origWidth - data[fname].extractLeft) : data[fname].extractWidth
@@ -149,22 +165,18 @@ router.put('/:series/:dir/:name', upload.none(), (req, res) => {
 })
 
 // DELETE 
-router.delete('/:series/:dir/:name', (req, res) => {
-  const dir = `${imgSrcDir}/series/${req.params.dir}`
-  const destDir = `${imgDestDir}/series/${req.params.dir}`
-  const fname = req.params.name
+router.delete('/*', (req, res) => {
+  const dir = imgSrcDir + req.url.substring(0, req.url.lastIndexOf('/'))
+  const destDir = imgDestDir + req.url.substring(0, req.url.lastIndexOf('/'))
+  const fname = req.url.substring(req.url.lastIndexOf('/')+1)
 
   let renderData = {
     "images" : "", 
     "path" : req.url, 
-    "folder" : req.params.name
   }
-  let resized = false
 
   const data =  fse.readJsonSync(dir+'/details.json')
-  if (data[fname].resizeHeight || data[fname].resizeWidth) {
-    resized = true
-  }
+
   delete(data[fname])
   renderData.images = data
   fse.writeJsonSync(dir+'/details.json', data)
@@ -183,15 +195,5 @@ router.delete('/:series/:dir/:name', (req, res) => {
       console.error(err.message)
     })
 })
-
-// UTILITY FUNCTIONS
-async function getMetadata(image) {
-  try {
-    const metadata = await sharp(image).metadata();
-    console.log(metadata);
-  } catch (error) {
-    console.log(`An error occurred during processing: ${error}`);
-  }
-}
 
 module.exports = router

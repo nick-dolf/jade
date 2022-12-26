@@ -1,6 +1,9 @@
 extends layouts/default
 
 block main
+  li.list-group-item.d-flex.justify-content-end
+    a.h5(href=site.baseURL+'/admin/images/home') Manage Images
+
   form.accordion(id="pageForm")
     div.accordion-item
       h2.accordion-header(id="headingOne")
