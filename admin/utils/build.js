@@ -11,7 +11,7 @@ function renderSass() {
   const main = path.join(process.cwd(), 'src/sass/main.scss')
   const style = path.join(process.cwd(), 'site/assets/css/style.css')
 
-  const result = sass.compile(main)
+  const result = sass.compile(main, {style:"compressed"})
 
   fs.writeFile(style, result.css.toString(), (err) => {
     if (err) console.error(err.message);

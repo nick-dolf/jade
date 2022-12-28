@@ -1,35 +1,35 @@
 /*
 * SLIDESHOW
 */
-function slideShow(id, index, active) {
+const carousels = document.getElementsByClassName('carousel')
 
-  if(window[active]) {
-    const parent = document.getElementById(id)
-    const slides = parent.getElementsByClassName('slide')
-    const boxes = parent.getElementsByClassName('box')
-  
-    let slideIndex = window[index]
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-      boxes[i].classList.remove("filled")
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}
-    slides[slideIndex-1].style.display = "block";
-    boxes[slideIndex-1].classList.add("filled");
-    
-    window[index] = slideIndex
-    setTimeout(slideShow, 8000, id, index, active); 
-  }
+let carouselActive = []
+let carouselIndex = []
+
+for (let num = 0; num < carousels.length; num++) {
+  carouselActive.push(true)
+  carouselIndex.push(0)
+
+  let nextButton = carousels[num].getElementsByClassName('next')[0]
+  nextButton.addEventListener('click', () => {
+    slideNext(carousels[num], num)
+  })
+
+  let prevButton = carousels[num].getElementsByClassName('prev')[0]
+  prevButton.addEventListener('click', () => {
+    slidePrev(carousels[num], num)
+  })
+
+  slideShow(carousels[num], num)
 }
 
-function next(id, index, active) {
-  window[active] = false
-  const parent = document.getElementById(id)
-  const slides = parent.getElementsByClassName('slide')
-  const boxes = parent.getElementsByClassName('box')
+function slideNext(carousel, num) {
+  carouselActive[num] = false
 
-  let slideIndex = window[index]
+  const slides = carousel.getElementsByClassName('slide')
+  const boxes = carousel.getElementsByClassName('box')
+
+  let slideIndex = carouselIndex[num]
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
     boxes[i].classList.remove("filled")
@@ -38,17 +38,17 @@ function next(id, index, active) {
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "block";
   boxes[slideIndex-1].classList.add("filled");
-
-  window[index] = slideIndex
+  
+  carouselIndex[num] = slideIndex
 }
 
-function prev(id, index, active) {
-  window[active] = false
-  const parent = document.getElementById(id)
-  const slides = parent.getElementsByClassName('slide')
-  const boxes = parent.getElementsByClassName('box')
+function slidePrev(carousel, num) {
+  carouselActive[num] = false
 
-  let slideIndex = window[index]
+  const slides = carousel.getElementsByClassName('slide')
+  const boxes = carousel.getElementsByClassName('box')
+
+  let slideIndex = carouselIndex[num]
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
     boxes[i].classList.remove("filled")
@@ -58,7 +58,28 @@ function prev(id, index, active) {
   slides[slideIndex-1].style.display = "block";
   boxes[slideIndex-1].classList.add("filled");
 
-  window[index] = slideIndex
+  carouselIndex[num] = slideIndex
+}
+
+function slideShow(carousel, num) {
+  if (carouselActive[num]) {
+    const slides = carousel.getElementsByClassName('slide')
+    const boxes = carousel.getElementsByClassName('box')
+  
+    let slideIndex = carouselIndex[num]
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      boxes[i].classList.remove("filled")
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    boxes[slideIndex-1].classList.add("filled");
+    
+    carouselIndex[num] = slideIndex
+
+    setTimeout(slideShow, 2000, carousel, num)
+  }
 }
 
 /*
@@ -66,11 +87,21 @@ function prev(id, index, active) {
 */
 let activeModal = false
 
-function showModal(image, subtext) {
+const modalButtons = document.getElementsByClassName('modal-img-btn')
+
+Array.from(modalButtons).forEach(button => {
+  button.addEventListener("click", () => {
+    showModal(button.dataset.image, button.dataset.subtext, button.dataset.width, button.dataset.height)
+  })
+})
+
+function showModal(image, subtext, width, height) {
   if(!activeModal) {
     const modal = document.getElementById('modal')
     modal.style.display = "flex"
     const img = modal.getElementsByTagName('img')[0]
+    img.width = width
+    img.height = height
 
     const sub = document.getElementsByClassName('subtext')[0]
 
@@ -90,9 +121,3 @@ window.onclick = function(event) {
     activeModal = false;
   }
 }
-
-
-// function hideModal(id) {
-//   const modal = document.getElementById(id)
-//   modal.style.display = "none"
-// }

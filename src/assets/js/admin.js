@@ -38,13 +38,15 @@ function updatePage() {
 
 // Delete DELETE
 function deletePage(page) {
-  axios.delete("pages/series/" + page)
-  .then( res => {
-    location.reload()
-  })
-  .catch(err => {
-    console.error(err.message)
-  })
+  if(confirm(`do you really want to delete ${page}?`) == true) {
+    axios.delete("pages/series/" + page)
+    .then( res => {
+      location.reload()
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+  }
 }
 
 /*

@@ -79,8 +79,7 @@ router.put('/*', upload.none(), (req, res) => {
   const keys = Object.keys(req.body)
   let data = fse.readJsonSync(pageDir + page + '.json')
   let pageData = data
-
-  
+  pageData.page = page
 
   keys.forEach((key, i) => {
     pageData[key] = req.body[key]
@@ -102,6 +101,17 @@ router.put('/*', upload.none(), (req, res) => {
         res.send('ok')
       }, 3000)
     })
+
+  // page specific css
+  const css = `:root {
+    --text-color: ${req.body.textColor};
+    --link-color: ${req.body.linkColor};
+    --link-hover-color: ${req.body.linkHoverColor};
+    --modal-color: #000;
+    background-image: linear-gradient(${req.body.topColor}, ${req.body.bottomColor});
+  }`
+
+  fse.outputFile(`${siteDir}assets/css/${page}.css`, css)
 
 })
 

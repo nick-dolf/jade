@@ -12,12 +12,13 @@ div.row
         a(href=site.baseURL+'/admin/assets/images'+path+'/modify/'+fname)
           img.img-fluid.img-thumbnail(
                 height=200 width=200 
-                src= site.baseURL+'/admin/assets/images'+path+'/modify/thumb/'+fname)
+                src= site.baseURL+'/admin/assets/images'+path+'/modify/thumb/'+fname+'?'+Date.now())
       else
         p Not Modified
   div.col-lg-8
     div.d-flex.justify-content-between
       label.form-label= `Original Image: ${object.origWidth} x ${object.origHeight} (W x H) `
+      label.form-label= `Final Image: ${object.width} x ${object.height} (W x H) `
       label.form-label= `Filename: ${fname}`
     form(id=`${folder}/${fname}` enctype="multipart/form-data")
 
@@ -54,8 +55,6 @@ div.row
               input.form-control(name="resizeHeight" type="number" value=object.resizeHeight)
 
       div.input-group.mb-2
-        label.input-group-text.bg-secondary.text-white.w-15 Rotate
-        input.form-control(name="rotate" type="number" value=object.rotate)
         label.input-group-text.bg-secondary.text-white Sharpen
         label.input-group-text
           if(object.sharpen)

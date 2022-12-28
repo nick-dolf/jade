@@ -1,0 +1,3 @@
+mixin image-grid(imgName, width, height, alt)
+  - const toWebp = imgName.replace(/\.[^.]+$/, '-460.webp')
+    img(src=site.baseURL + `/assets/images${path}/${toWebp}` alt=alt height=height width=width)

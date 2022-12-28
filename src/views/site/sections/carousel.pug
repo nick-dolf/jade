@@ -16,17 +16,11 @@ mixin carousel(content, id)
           div.subtitle
             != md(item.subtext)
 
-    button.btn-ghost.btn-img.prev(onclick=`prev("${id}", "${id}Index","${id}Active")` aria-label="Next image")
+    button.btn-ghost.btn-img.prev(aria-label="Next image")
       include ../components/chevron-left.pug
-    button.btn-ghost.btn-img.next(onclick=`next("${id}", "${id}Index","${id}Active")` aria-label="Previous image")
+    button.btn-ghost.btn-img.next(aria-label="Previous image")
       include ../components/chevron-right.pug
 
     div.boxes
       for item, index in content
         div.box
-
-    script.
-      var !{id}Active = true
-      var !{id}Index = 0
-      var test = 'my name'
-      slideShow("!{id}", "!{id}Index", "!{id}Active")
