@@ -107,7 +107,7 @@ router.put('/*', upload.none(), (req, res) => {
     --text-color: ${req.body.textColor};
     --link-color: ${req.body.linkColor};
     --link-hover-color: ${req.body.linkHoverColor};
-    --modal-color: #000;
+    --modal-color: ${build.toModalColor(req.body.modalColor)};
     background-image: linear-gradient(${req.body.topColor}, ${req.body.bottomColor});
   }`
 

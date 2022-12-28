@@ -78,7 +78,7 @@ function slideShow(carousel, num) {
     
     carouselIndex[num] = slideIndex
 
-    setTimeout(slideShow, 2000, carousel, num)
+    setTimeout(slideShow, 8000, carousel, num)
   }
 }
 
