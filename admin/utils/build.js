@@ -36,6 +36,8 @@ function processImage(imgName, imgDetails, path) {
   const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '')
 
 
+  
+
   sharp(srcImage)
     .resize({
       width: 1400,
@@ -100,12 +102,13 @@ function processGridImage(imgName, imgDetails, path, width, height) {
 
 }
 
-function processMenuImage(imgName, imgDetails, path) {
-  let srcImage = imgSrcDir+path+'/original/'+imgName
+function processMenuImage(imgName, imgDetails, dir) {
+  let srcImage = imgSrcDir+dir+'/original/'+imgName
   if (imgDetails.modified) {
-    srcImage = imgSrcDir+path+'/modify/'+imgName
+    srcImage = imgSrcDir+dir+'/modify/'+imgName
   }
-  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '')
+  const destImage = imgDestDir+dir+'/'+imgName.replace(/\.[^.]+$/, '')
+
 
   sharp(srcImage)
     .resize({
@@ -136,6 +139,17 @@ function processMenuImage(imgName, imgDetails, path) {
     })
     .webp()
     .toFile(destImage+'-400w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 1100,
+      height: 825
+    })
+    .jpeg()
+    .toFile(destImage+'-1100w.jpg')
     .catch(err => {
     console.error(err.message)
   })

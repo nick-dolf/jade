@@ -137,10 +137,12 @@ function renderPage(page) {
     destination = siteDir + page.path + "/index.html"
   }
 
+  console.time('render')
   app.render("site/" + page.template, page, (err, html) => {
     if (err) {
       console.error(err.message)
     } else {
+      console.timeEnd('render')
       fse.outputFile(destination, html)
         .catch(err => {
           console.error(err.message)
