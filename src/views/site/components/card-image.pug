@@ -4,8 +4,10 @@ div(class="card")
   - processMenuImage(page.image, images[page.image], '/home')
 
   a(href=site.baseURL+"/series/"+page.link class="link" )
-    div(class="card-image-container")
-      img(src=name+'-1100w.jpg' alt=images[page.image].alt class="card-image"
-      srcset=name+'-400w.webp 400w, ' + name+'-800w.webp 800w, ' + name+'-1100w.webp 1100w'
-      sizes="(max-width: 400px) 400px, (min-width: 1100px) 692px")
+    div.card-image-container
+      picture
+        source(type="image/webp" srcset=name+'-400w.webp 400w, ' + name+'-800w.webp 800w, ' + name+'-1100w.webp 1100w'
+        sizes="(max-width: 400px) 400px, (min-width: 1100px) 692px")
+
+        img.card-image(src=name+'-1100w.jpg' alt=images[page.image].alt height=images[page.image].height width=images[page.image].width)
     h2= page.title
