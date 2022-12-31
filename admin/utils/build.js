@@ -6,6 +6,7 @@ const sharp = require('sharp')
 
 const imgSrcDir = path.join(process.cwd(), 'assets/images')
 const imgDestDir = path.join(process.cwd(), 'site/assets/images')
+const pageDir = path.join(process.cwd(), 'src/pages')
 
 function renderSass() {
   const main = path.join(process.cwd(), 'src/sass/main.scss')
@@ -16,6 +17,28 @@ function renderSass() {
   fs.writeFile(style, result.css.toString(), (err) => {
     if (err) console.error(err.message);
   })
+}
+
+function getPages() {
+  return getPagesRec(pageDir)
+}
+
+async function getPagesRec(dir) {
+  let pages = []
+  const entries = await fse.readdir(dir, {withFileTypes: true})
+
+  for (var i = 0; i < entries.length; i++) {
+    if(entries[i].isFile()) {
+      pages.push(entries[i].name)
+    } else {
+      let subPages = await getPagesRec(dir+"/"+entries[i].name)
+      subPages.forEach(subPage => {
+        pages.push(entries[i].name+"/"+subPage)
+      })
+    }
+  }
+
+  return pages
 }
 
 function getSeriesPages() {
@@ -212,4 +235,4 @@ function toModalColor(hex) {
 }
 
 
-module.exports = { renderSass, getSeriesPages, processImage, processGridImage, toModalColor, processMenuImage };
+module.exports = { renderSass, getPages, getSeriesPages, processImage, processGridImage, toModalColor, processMenuImage };

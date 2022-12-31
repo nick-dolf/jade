@@ -26,3 +26,7 @@ body {
 main section:first-child {
   margin-top: 0;
 }
+
+img {
+  user-select: none;
+}

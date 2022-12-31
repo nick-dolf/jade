@@ -72,6 +72,21 @@ router.get('*', (req, res) => {
 })
 
 // UPDATE (PUT)
+router.put('/buildAll', (req, res) => {
+  build.getPages()
+    .then(pages => {
+      return renderAll(pages)
+    })
+    .then(() => {
+      res.send("ok")
+    })
+    .catch(err => {
+      res.send('error')
+      console.error(err.message)
+    })
+}) 
+
+
 router.put('/*', upload.none(), (req, res) => {
   let page = req.url.slice(1)
   if(!page) page = 'home'
@@ -129,6 +144,30 @@ router.delete('/:dir/:name', (req, res) => {
 })
 
 // Utility
+async function renderAll(pages) {
+  await pages.forEach(page => {
+    const pageName = page.replace('.json', '')
+
+    let data = fse.readJsonSync(pageDir + pageName + '.json')
+    let pageData = data
+    pageData.page = pageName
+
+    fse.readJson(imageDir + pageName + '/details.json')
+    .then(data => {
+      pageData.images = data
+      renderPage(pageData)
+    })
+    .catch(() => {
+      renderPage(pageData)
+      setTimeout(() => {
+      }, 3000)
+    })
+
+  })
+}
+
+
+
 function renderPage(page) {
   let destination =""
   if (page.path === '/') {
@@ -137,12 +176,10 @@ function renderPage(page) {
     destination = siteDir + page.path + "/index.html"
   }
 
-  console.time('render')
   app.render("site/" + page.template, page, (err, html) => {
     if (err) {
       console.error(err.message)
     } else {
-      console.timeEnd('render')
       fse.outputFile(destination, html)
         .catch(err => {
           console.error(err.message)

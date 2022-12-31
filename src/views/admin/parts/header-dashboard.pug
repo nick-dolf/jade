@@ -1,0 +1,10 @@
+header.bg-secondary.text-white.fixed-top
+  nav.p-3.d-flex.justify-content-between
+
+    h2
+      a.m-2.link-light(href= site.baseURL + "/admin/dashboard") Dashboard
+      span /
+      a.m-2.link-light(href= site.baseURL + path)= title
+    div
+      button.btn.btn-primary(onclick="buildAll()" id="buildButton") Build All Pages
+        span.ms-2.spinner-border.spinner-border-sm.d-none

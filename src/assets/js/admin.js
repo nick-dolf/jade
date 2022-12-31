@@ -20,9 +20,6 @@ function updatePage() {
   const data = new FormData(document.getElementById('pageForm'))
   const saveButton = document.getElementById("saveChanges")
 
-  for (const [key, value] of data) {
-    console.log(`${key}: ${value}\n`)
-  }
   saveButton.disabled = true
   saveButton.firstChild.textContent = "Loading"
   saveButton.lastChild.classList.remove("d-none")
@@ -30,6 +27,28 @@ function updatePage() {
   axios.put("", data)
     .then( res => {
       location.reload()
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+}
+
+function buildAll() {
+  const buildButton = document.getElementById("buildButton")
+
+  buildButton.disabled = true
+  buildButton.firstChild.textContent = "Building"
+  buildButton.lastChild.classList.remove("d-none")
+
+  axios.put("./pages/buildAll")
+    .then( res => {
+      console.log(res)
+      buildButton.firstChild.textContent = "Built!!"
+      buildButton.lastChild.classList.add("d-none")
+      setTimeout(() => {
+        buildButton.disabled = false
+        buildButton.firstChild.textContent = "Build All Pages"
+      }, 4000)
     })
     .catch(err => {
       console.error(err.message)
@@ -55,7 +74,6 @@ function deletePage(page) {
 // SUBMIT SPINNER
 function submitSpinner() { 
   const submitButton = document.getElementById("submitButton")
-  console.log(submitButton)
 
   submitButton.disabled = true
   submitButton.firstChild.textContent = "Loading"
@@ -86,7 +104,7 @@ function updateImage(img) {
       setTimeout(() => {
         imgButton.disabled = false
         imgButton.firstChild.textContent = "Update"
-      }, 2000)
+      }, 4000)
     } else {
       imgButton.disabled = false
       imgButton.firstChild.textContent = "Update"

@@ -17,18 +17,18 @@ if (process.env.NODE_ENV === 'development') {
   app.use(express.static('site'))
  
   // Live Reload
-  const livereload = require('livereload')
-  const liveReloadServer = livereload.createServer()
-  liveReloadServer.watch(path.join(__dirname, 'site'))
+  // const livereload = require('livereload')
+  // const liveReloadServer = livereload.createServer()
+  // liveReloadServer.watch(path.join(__dirname, 'site'))
 
-  const connectLivereload = require('connect-livereload')
-  app.use(connectLivereload())
+  // const connectLivereload = require('connect-livereload')
+  // app.use(connectLivereload())
 
-  liveReloadServer.server.once("connection", () => {
-    setTimeout(() => {
-      liveReloadServer.refresh("/");
-    }, 100);
-  });
+  // liveReloadServer.server.once("connection", () => {
+  //   setTimeout(() => {
+  //     liveReloadServer.refresh("/");
+  //   }, 100);
+  // });
 
   // Make html easy to read
   app.locals.pretty = true;
