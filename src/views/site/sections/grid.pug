@@ -1,16 +1,15 @@
-include ../components/image
+include ../components/image-grid
 
 mixin grid(content)
   section.image-grid 
     for item in content
-      - 
-        const toWebp = item.image.replace(/\.[^.]+$/, '.webp')
-        let imgHeight = parseInt(460 / images[item.image].origWidth * images[item.image].origHeight)
-        processGridImage(item.image, images[item.image], path, 460, imgHeight)
+      - var dir = site.baseURL + `/assets/images${path}/`
+      - const modalImage = dir + item.image.replace(/\.[^.]+$/, '-modal')
       button.modal-img-btn(
-                          data-image=`${site.baseURL}/assets/images${path}/${toWebp}`
+                          data-image=modalImage
                           data-height=images[item.image].height
                           data-width=images[item.image].width
+                          data-alt=images[item.image].alt
                           data-subtext=encodeURIComponent(md(item.subtext.toString()))
                           aria-label="Display large version of image")
-        +image(item.image, 460, imgHeight, images[item.image].alt)
+        +image-grid(item.image, images[item.image])

@@ -35,9 +35,6 @@ function processImage(imgName, imgDetails, path) {
   }
   const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '')
 
-
-  
-
   sharp(srcImage)
     .resize({
       width: 1400,
@@ -45,6 +42,17 @@ function processImage(imgName, imgDetails, path) {
     })
     .webp()
     .toFile(destImage+'-1400w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 1400,
+      height: 800
+    })
+    .jpeg()
+    .toFile(destImage+'-1400w.jpg')
     .catch(err => {
     console.error(err.message)
   })
@@ -84,18 +92,56 @@ function processImage(imgName, imgDetails, path) {
 
 }
 
-function processGridImage(imgName, imgDetails, path, width, height) {
-  let srcImage = imgSrcDir+path+'/original/'+imgName
+function processGridImage(imgName, imgDetails, dir, width, height) {
+  let srcImage = imgSrcDir+dir+'/original/'+imgName
+  if (imgDetails.modified) {
+    srcImage = imgSrcDir+dir+'/modify/'+imgName
+  }
+  const destImage = imgDestDir+dir+'/'+imgName.replace(/\.[^.]+$/, '')
 
-  const destImage = imgDestDir+path+'/'+imgName.replace(/\.[^.]+$/, '-460.webp')
+  sharp(srcImage)
+    .webp()
+    .toFile(destImage+'-modal.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .jpeg()
+    .toFile(destImage+'-modal.jpg')
+    .catch(err => {
+    console.error(err.message)
+  })
 
   sharp(srcImage)
     .resize({
-      width: width,
+      width: 460,
       height: height,
     })
     .webp()
-    .toFile(destImage)
+    .toFile(destImage+'-460w.webp')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 460,
+      height: height,
+    })
+    .jpeg()
+    .toFile(destImage+'-460w.jpg')
+    .catch(err => {
+    console.error(err.message)
+  })
+
+  sharp(srcImage)
+    .resize({
+      width: 341,
+      height: Math.round((341/460)*height),
+    })
+    .webp()
+    .toFile(destImage+'-341w.webp')
     .catch(err => {
     console.error(err.message)
   })

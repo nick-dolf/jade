@@ -4,15 +4,14 @@ include ../components/image-carousel-lazy
 mixin carousel(content, id)
   section.carousel(id=id)
     for item, index in content
-      - processImage(item.image, images[item.image], path)
       if index == 0
         div.slide
-          +image-carousel(item.image, images[item.image].alt)
+          +image-carousel(item.image, images[item.image])
           div.subtitle
             != md(item.subtext)
       else
         div.slide.hidden
-          +image-carousel-lazy(item.image, images[item.image].alt)
+          +image-carousel-lazy(item.image, images[item.image])
           div.subtitle
             != md(item.subtext)
 

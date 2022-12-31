@@ -6,8 +6,9 @@ div(class="card")
   a(href=site.baseURL+"/series/"+page.link class="link" )
     div.card-image-container
       picture
-        source(type="image/webp" srcset=name+'-400w.webp 400w, ' + name+'-800w.webp 800w, ' + name+'-1100w.webp 1100w'
-        sizes="(max-width: 400px) 400px, (min-width: 1100px) 692px")
-
-        img.card-image(src=name+'-1100w.jpg' alt=images[page.image].alt height=images[page.image].height width=images[page.image].width)
+        source(type="image/webp" media="(max-width: 360px)" srcset=name+'-400w.webp')
+        source(type="image/webp" media="(max-width: 725px)" srcset=name+'-800w.webp')
+        source(type="image/webp" media="(max-width: 999px)" srcset=name+'-1100w.webp')
+        source(type="image/webp" media="(min-width: 1000px)" srcset=name+'-800w.webp')
+        img.card-image(src=name+'-1100w.jpg' alt=images[page.image].alt height=825 width=1100)
     h2= page.title

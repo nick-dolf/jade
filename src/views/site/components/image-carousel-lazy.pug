@@ -1,7 +1,11 @@
-mixin image-carousel-lazy(imgName, alt)
+mixin image-carousel-lazy(imgName, imgDetails)
   - var dir = site.baseURL + `/assets/images${path}/`
   - const name = dir + imgName.replace(/\.[^.]+$/, '')
+  - processImage(imgName, imgDetails, path)
 
-  img(src=name+'-1400w.webp' alt=alt width=1400 height=800
-      srcset=name+'-350w.webp 350w, ' + name+'-700w.webp 700w, ' + name+'-1050w.webp 1050w, ' + name+'-1400w.webp 1400w'
-    loading="lazy")
+  picture
+    source(type="image/webp" media="(max-width: 350px)" srcset=name+'-350w.webp')
+    source(type="image/webp" media="(max-width: 700px)" srcset=name+'-700w.webp')
+    source(type="image/webp" media="(max-width: 1050px)" srcset=name+'-1050w.webp')
+    source(type="image/webp" media="(min-width: 1051px)" srcset=name+'-1400w.webp')
+    img(src=name+'-1400w.jpg' alt=imgDetails.alt width=1400 height=800 loading="lazy")

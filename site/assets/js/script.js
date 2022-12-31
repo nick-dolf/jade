@@ -91,23 +91,27 @@ const modalButtons = document.getElementsByClassName('modal-img-btn')
 
 Array.from(modalButtons).forEach(button => {
   button.addEventListener("click", () => {
-    showModal(button.dataset.image, button.dataset.subtext, button.dataset.width, button.dataset.height)
+    showModal(button.dataset.image, button.dataset.subtext, button.dataset.width, button.dataset.height, button.dataset.alt)
   })
 })
 
-function showModal(image, subtext, width, height) {
+function showModal(image, subtext, width, height, alt) {
   if(!activeModal) {
     const modal = document.getElementById('modal')
-    modal.style.display = "flex"
+    const source = modal.getElementsByTagName('source')[0]
     const img = modal.getElementsByTagName('img')[0]
     img.width = width
     img.height = height
+    source.width = width
+    source.height = height
+    source.srcset = image+".webp"
+    img.src= image+".jpg"
+    img.alt = alt
 
     const sub = document.getElementsByClassName('subtext')[0]
 
-    img.src= image
     sub.innerHTML = decodeURIComponent(subtext)
-
+    modal.style.display = "flex"
     setTimeout(() =>{
       activeModal = modal
     }, 100)

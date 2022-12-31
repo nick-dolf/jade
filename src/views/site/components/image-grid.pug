@@ -1,3 +1,11 @@
-mixin image-grid(imgName, width, height, alt)
-  - const toWebp = imgName.replace(/\.[^.]+$/, '-460.webp')
-    img(src=site.baseURL + `/assets/images${path}/${toWebp}` alt=alt height=height width=width)
+mixin image-grid(imgName, imgDetails)
+  - var dir = site.baseURL + `/assets/images${path}/`
+  - const name = dir + imgName.replace(/\.[^.]+$/, '')
+  - const imgHeight = parseInt(460 / imgDetails.width * imgDetails.height)
+  - processGridImage(imgName, imgDetails, path, 460, imgHeight)
+
+  picture
+    source(type="image/webp" media="(max-width: 740px)" srcset=name+'-341w.webp')
+    source(type="image/webp" media="(max-width: 999px)" srcset=name+'-460w.webp')
+    source(type="image/webp" media="(min-width: 1000px)" srcset=name+'-341w.webp')
+    img(src=name+'-460w.jpg' alt=imgDetails.alt width=460 height=imgHeight)
