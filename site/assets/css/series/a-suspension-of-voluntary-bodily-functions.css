@@ -2,6 +2,6 @@
     --text-color: #000000;
     --link-color: #f9b14e;
     --link-hover-color: #607ca9;
-    --modal-color: #000;
+    --modal-color: rgba(54,124,116, 0.9);
     background-image: linear-gradient(#0bb5c1, #bcb610);
   }
