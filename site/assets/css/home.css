@@ -1,7 +1,7 @@
 :root {
     --text-color: #a9c7c8;
     --link-color: #c9b0b0;
-    --link-hover-color: #e5c37d;
+    --link-hover-color: #fbe2b1;
     --modal-color: rgba(0,0,0, 0.9);
     background-image: linear-gradient(#686aa8, #ca8174);
   }
