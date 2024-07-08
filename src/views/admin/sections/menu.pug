@@ -14,7 +14,7 @@ mixin menu-item(index, title, link, image)
       div.col-md-6.container
         img.img-fluid.img-thumbnail(
           height=150 width=150 
-          src= site.baseURL + "/admin/src/assets/images/home/thumb/" + image)
+          src= site.baseURL + `/admin/assets/images/home/modify/thumb/${image}`)
         button.btn.btn-primary(type="button"
                                   data-bs-toggle="modal" data-bs-target="#imageModal"
                                   onclick="setActive(event)"

@@ -1,6 +1,7 @@
 div(class="card")
   - var dir = site.baseURL + `/assets/images/home/`
   - const name = dir + page.image.replace(/\.[^.]+$/, '')
+  - console.log(page)
   - processMenuImage(page.image, images[page.image], '/home')
 
   a(href=site.baseURL+"/series/"+page.link class="link" )
