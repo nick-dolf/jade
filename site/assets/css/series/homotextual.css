@@ -1,0 +1,7 @@
+:root {
+    --text-color: #000000;
+    --link-color: #7605ff;
+    --link-hover-color: #da94ff;
+    --modal-color: rgba(106,104,21, 0.9);
+    background-image: linear-gradient(#e9d60c, #8a7e00);
+  }
